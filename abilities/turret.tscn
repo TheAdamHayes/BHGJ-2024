@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpj1dstaaqis6"]
+
+[ext_resource type="Script" path="res://abilities/turret.gd" id="1_8iwik"]
+
+[node name="Turret" type="Node2D"]
+script = ExtResource("1_8iwik")
+
+[node name="UpgradeTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 5.0
+autostart = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+process_callback = 0
+autostart = true
