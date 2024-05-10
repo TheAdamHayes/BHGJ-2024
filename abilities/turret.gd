@@ -70,9 +70,9 @@ func fire():
 func on_upgrade_timer_timeout():
 	if upgrade_version < 3:
 		set_upgrade_version(upgrade_version + 1)
-	elif upgrade_version == 3:
-		# destroy turret
-		queue_free()
+	# elif upgrade_version == 3:
+	# destroy turret
+	# queue_free()
 
 
 func on_attack_timer_timeout():

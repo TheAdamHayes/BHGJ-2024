@@ -1,5 +1,6 @@
 extends Node2D
 @onready var hitbox: Area2D = $Hitbox
+@onready var life_timer: Timer = $LifeTimer
 
 # Define the width and length of bullet
 var width: int = 3
@@ -12,6 +13,7 @@ var damage = 2
 func _ready():
 	hitbox.area_entered.connect(on_bullet_hit)
 	hitbox.body_entered.connect(on_bullet_hit)
+	life_timer.timeout.connect(queue_free)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

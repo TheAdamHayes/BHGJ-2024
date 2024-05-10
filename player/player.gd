@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const TURRET = preload("res://abilities/turret.tscn")
 var speed = 100
+var invincible: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -27,6 +28,7 @@ func _process(delta):
 	queue_redraw()
 	velocity = get_input_direction() * speed
 	move_and_slide()
+	stay_in_viewport()
 
 
 func get_input_direction() -> Vector2:
@@ -40,7 +42,27 @@ func _draw():
 
 
 func take_damage(damage: int) -> void:
-	health_component.reduce_health(damage)
+	if !invincible:
+		health_component.reduce_health(damage)
+		activate_iframe_seconds(2)
+
+
+# over the next duration seconds, be invincible and flicker visibility
+func activate_iframe_seconds(duration: float) -> void:
+	invincible = true
+	var saved_collision_layer: int = collision_layer
+	collision_layer = 0
+	var flicker_interval: float = 0.15
+	var tween: Tween = create_tween().set_loops()
+	tween.tween_callback(set_visible.bind(false))
+	tween.tween_interval(flicker_interval)
+	tween.tween_callback(set_visible.bind(true))
+	tween.tween_interval(flicker_interval)
+	await get_tree().create_timer(duration).timeout
+	tween.kill()
+	set_visible(true)
+	collision_layer = saved_collision_layer
+	invincible = false
 
 
 func on_health_changed(new_health_amount: int) -> void:
@@ -54,3 +76,12 @@ func die() -> void:
 
 func get_health() -> int:
 	return health_component.health
+
+
+# Hacky way to keep player from leaving screen for fast prototype purposes only
+# only works when the game is centered at 0,0
+func stay_in_viewport():
+	var viewport: Vector2 = get_viewport_rect().size
+	position = position.clamp(
+		Vector2(-viewport.x / 2, -viewport.y / 2), Vector2(viewport.x / 2, viewport.y / 2)
+	)

@@ -1,13 +1,15 @@
 extends CharacterBody2D
 @onready var health_component = $HealthComponent
-
-var speed = 60
+@onready var hitbox = $Hitbox
+var speed = 20
+var contact_damage: int = 2
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	velocity = Vector2.ZERO
 	health_component.health_changed.connect(on_health_changed)
+	hitbox.body_entered.connect(on_hitbox_body_entered)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,3 +36,8 @@ func on_health_changed(new_health_amount: int) -> void:
 
 func die() -> void:
 	queue_free()
+
+
+func on_hitbox_body_entered(body: Node2D) -> void:
+	if body.has_method("take_damage"):
+		body.take_damage(contact_damage)
