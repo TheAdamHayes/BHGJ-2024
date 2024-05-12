@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2kn8b8fgmii1"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_r2vut"]
+[ext_resource type="PackedScene" uid="uid://6pq7txmq8qn0" path="res://components/health_component.tscn" id="2_vgw2q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bxk17"]
+radius = 3.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 0
+script = ExtResource("1_r2vut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bxk17")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_vgw2q")]
+max_health = 10

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ul1l40ldt1w6"]
+
+[ext_resource type="Script" path="res://autoload/debug_overlay.gd" id="1_7w6dv"]
+
+[node name="DebugOverlay" type="CanvasLayer"]
+script = ExtResource("1_7w6dv")
+
+[node name="DebugData" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

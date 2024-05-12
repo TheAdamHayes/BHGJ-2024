@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://lpwwjs7vfskc"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_0cnj1"]
+[ext_resource type="PackedScene" uid="uid://c2kn8b8fgmii1" path="res://player/player.tscn" id="2_s0u70"]
+[ext_resource type="PackedScene" uid="uid://q2xqpch373xp" path="res://enemies/enemy_spawner.tscn" id="3_l1mou"]
+[ext_resource type="PackedScene" uid="uid://drgaacr8tvtlv" path="res://components/game_camera.tscn" id="4_dybw0"]
+[ext_resource type="Texture2D" uid="uid://crrlgjrqnrfrl" path="res://icon.svg" id="5_xep0e"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_0cnj1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.470076, 0.470076, 0.470076, 0.521569)
+scale = Vector2(3, 3)
+texture = ExtResource("5_xep0e")
+
+[node name="Player" parent="." instance=ExtResource("2_s0u70")]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_l1mou")]
+
+[node name="GameCamera" parent="." instance=ExtResource("4_dybw0")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
