@@ -4,6 +4,7 @@ extends CharacterBody2D
 var speed = 20
 var contact_damage: int = 2
 
+@export var points: int = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,6 +36,7 @@ func on_health_changed(new_health_amount: int) -> void:
 
 
 func die() -> void:
+	Events.emit_signal("update_score", 10, "add")
 	queue_free()
 
 
