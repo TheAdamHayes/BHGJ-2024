@@ -17,6 +17,31 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+AudioDev
+FMODRuntime="*res://addons/FMOD/runtime/fmod_runtime_manager.gd"
+
+[fmod]
+
+settings/banks_path="res://resources/fmod_banks/Desktop"
+settings/fmod_output_type=0
+settings/fmod_debug_flags=0
+settings/fmod_debug_mode=1
+settings/banks_to_load_at_startup=Array[String](["res://resources/fmod_banks/Desktop/Master.bank", "res://resources/fmod_banks/Desktop/Master.strings.bank"])
+settings/banks_preload_samples=false
+settings/banks_flags=0
+settings/sample_rate=48000
+settings/speaker_mode=3
+settings/dsp_buffer_length=512
+settings/dsp_buffer_count=4
+settings/real_channel_count=32
+settings/virtual_channel_count=128
+settings/enable_live_update=true
+settings/live_update_port=9264
+settings/enable_memory_tracking=false
+settings/encryption_key=""
+settings/distance_scale_2d=1.0
+settings/init_with_3d_righthanded=true
+
 Global="*res://autoload/global.gd"
 Debug="*res://autoload/debug_overlay.tscn"
 
@@ -106,3 +131,4 @@ next_frame={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+main

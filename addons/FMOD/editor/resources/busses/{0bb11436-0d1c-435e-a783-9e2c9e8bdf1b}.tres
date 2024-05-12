@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://b0e7kakcbmiyo"]
+
+[resource]
+path = "bus:/"
+guid = "{0bb11436-0d1c-435e-a783-9e2c9e8bdf1b}"
+name = "Master"
