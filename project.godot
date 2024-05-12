@@ -17,8 +17,24 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-AudioDev
+AudioDevFMODRuntime="*res://addons/FMOD/runtime/fmod_runtime_manager.gd"
 FMODRuntime="*res://addons/FMOD/runtime/fmod_runtime_manager.gd"
+Global="*res://autoload/global.gd"
+Debug="*res://autoload/debug_overlay.tscn"
+
+[debug]
+
+gdscript/warnings/unused_variable=0
+gdscript/warnings/unused_parameter=0
+
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=240
+window/size/window_width_override=1600
+window/size/window_height_override=900
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [fmod]
 
@@ -41,23 +57,6 @@ settings/enable_memory_tracking=false
 settings/encryption_key=""
 settings/distance_scale_2d=1.0
 settings/init_with_3d_righthanded=true
-
-Global="*res://autoload/global.gd"
-Debug="*res://autoload/debug_overlay.tscn"
-
-[debug]
-
-gdscript/warnings/unused_variable=0
-gdscript/warnings/unused_parameter=0
-
-[display]
-
-window/size/viewport_width=320
-window/size/viewport_height=240
-window/size/window_width_override=1600
-window/size/window_height_override=900
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [input]
 
@@ -131,4 +130,3 @@ next_frame={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-main

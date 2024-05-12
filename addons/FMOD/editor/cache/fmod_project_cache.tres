@@ -1,12 +1,14 @@
 [gd_resource type="ProjectCache" load_steps=7 format=3 uid="uid://d2j3oig22n5d1"]
 
-[ext_resource type="BankAsset" uid="uid://ba4p07m3f6sec" path="res://addons/FMOD/editor/resources/banks/{10760570-9dbf-412d-a528-17d827d0771c}.tres" id="1_r23t3"]
-[ext_resource type="BankAsset" uid="uid://dj6ch0k17e35d" path="res://addons/FMOD/editor/resources/banks/{886b25a4-ecc4-0d6f-2361-9d26d6237184}.tres" id="2_y36sh"]
-[ext_resource type="BusAsset" uid="uid://b0e7kakcbmiyo" path="res://addons/FMOD/editor/resources/busses/{0bb11436-0d1c-435e-a783-9e2c9e8bdf1b}.tres" id="3_1q5se"]
-[ext_resource type="BusAsset" uid="uid://fanqyt4ls28m" path="res://addons/FMOD/editor/resources/busses/{aa265751-69e6-4b6c-8bc1-e69948c12178}.tres" id="4_ylkfq"]
-[ext_resource type="EventAsset" uid="uid://bir2j655tt245" path="res://addons/FMOD/editor/resources/events/{4cb20c3b-5616-431d-adf5-849ebfa0e8e0}.tres" id="5_gui4f"]
+[ext_resource type="MissingResource" uid="uid://ba4p07m3f6sec" path="res://addons/FMOD/editor/resources/banks/{10760570-9dbf-412d-a528-17d827d0771c}.tres" id="1_r23t3"]
+[ext_resource type="MissingResource" uid="uid://dj6ch0k17e35d" path="res://addons/FMOD/editor/resources/banks/{886b25a4-ecc4-0d6f-2361-9d26d6237184}.tres" id="2_y36sh"]
+[ext_resource type="MissingResource" uid="uid://b0e7kakcbmiyo" path="res://addons/FMOD/editor/resources/busses/{0bb11436-0d1c-435e-a783-9e2c9e8bdf1b}.tres" id="3_1q5se"]
+[ext_resource type="MissingResource" uid="uid://fanqyt4ls28m" path="res://addons/FMOD/editor/resources/busses/{aa265751-69e6-4b6c-8bc1-e69948c12178}.tres" id="4_ylkfq"]
+[ext_resource type="MissingResource" uid="uid://bir2j655tt245" path="res://addons/FMOD/editor/resources/events/{4cb20c3b-5616-431d-adf5-849ebfa0e8e0}.tres" id="5_gui4f"]
 
 [sub_resource type="EventAsset" id="EventAsset_8noku"]
+resource_local_to_scene = false
+resource_name = ""
 is_oneshot = true
 min_distance = 1.0
 max_distance = 20.0
