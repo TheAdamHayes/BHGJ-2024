@@ -6,7 +6,8 @@ extends Node2D
 var width: int = 3
 var length: int = 7
 var speed: int = 0
-var damage = 2
+var damage: int = 2
+var color: Color = Color.ORANGE
 
 
 # Called when the node enters the scene tree for the first time.
@@ -23,8 +24,24 @@ func _process(delta):
 
 func _draw():
 	# Horizontal rectangle
-	draw_rect(Rect2(-length / 2.0, -width / 2.0, length, width), Color.ORANGE)
+	draw_rect(Rect2(-length / 2.0, -width / 2.0, length, width), color)
 
+# Determines who this bullet will attack
+func set_attack_type(type: String):
+	hitbox.set_collision_mask(0)  # reset mask
+	match type:
+		"player": 
+			# attack players
+			hitbox.set_collision_mask_value(1, true)
+		"enemy": 
+			# attack enemies
+			hitbox.set_collision_mask_value(2, true)
+		"both": 
+			# attack both player and enemies
+			hitbox.set_collision_mask_value(1, true)
+			hitbox.set_collision_mask_value(2, true)
+		_:
+			print("invalid bullet attac type")
 
 func on_bullet_hit(collider):
 	if collider.has_method("take_damage"):
