@@ -27,14 +27,18 @@ func _process(_delta: float) -> void:
 
 # Toggle debug globally with the hotkey
 func _input(event) -> void:
-	if event.is_action_pressed("debug"):
+	if Input.is_action_just_pressed("debug"):
 		enabled = !enabled
 		visible = enabled
-	if event.is_action_pressed("reset"):
+	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
-	if event.is_action_pressed("pause_resume"):
+		items = {}
+	if Input.is_action_just_pressed("pause_resume"):
 		frame_count = 0
 		get_tree().paused = not get_tree().paused
+	if Input.is_action_pressed("ui_cancel"):
+		# Quit any scene using esc while we're developing
+		get_tree().quit()
 
 
 func _set_debug_text() -> void:
@@ -42,7 +46,7 @@ func _set_debug_text() -> void:
 	if get_tree().paused:
 		debug_text = "frame: " + str(frame_count)
 	for key in items:
-		debug_text += "\n" + key + ":" + str(items[key])
+		debug_text += "\n" + key + ": " + str(items[key])
 	$DebugData.text = debug_text
 
 

@@ -7,8 +7,8 @@ const LINE_BULLET = preload("res://bullets/line_bullet.tscn")
 var speed = 100
 var invincible: bool = false
 var time_since_last_fire: float = 0.0
-var fire_rate: float = 0.2  # Adjust this value to control the fire rate (in seconds)
-var num_turrets: int = 3
+var fire_rate: float = 0.5  # Adjust this value to control the fire rate (in seconds)
+var available_turrets: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,11 +17,11 @@ func _ready():
 
 func _input(_event):
 	if Input.is_action_just_pressed("spacebar"):
-		if num_turrets > 0:
+		if available_turrets > 0:
 			var turret = TURRET.instantiate()
 			turret.global_position = global_position
 			get_parent().add_child(turret)
-			num_turrets -= 1
+			available_turrets -= 1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,6 +45,7 @@ func shoot_type1() -> void:
 	bullet.rotate(deg_to_rad(270))
 	bullet.speed = 200
 	bullet.damage = 2
+	bullet.color = Color.YELLOW
 	get_tree().root.add_child(bullet)
 	bullet.set_attack_type("enemy")
 
@@ -53,6 +54,7 @@ func shoot_type1() -> void:
 	bullet2.rotate(deg_to_rad(270))
 	bullet2.speed = 150
 	bullet2.damage = 2
+	bullet2.color = Color.YELLOW
 	get_tree().root.add_child(bullet2)
 	bullet2.set_attack_type("enemy")
 
@@ -67,6 +69,7 @@ func shoot_type2() -> void:
 		bullet.speed = 100
 		bullet.rotate(deg_to_rad(angle))
 		bullet.damage = 2
+		bullet.color = Color.YELLOW
 		get_tree().root.add_child(bullet)
 		bullet.set_attack_type("enemy")
 

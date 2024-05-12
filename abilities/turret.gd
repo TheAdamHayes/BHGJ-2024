@@ -2,25 +2,28 @@ extends Node2D
 
 @onready var upgrade_timer: Timer = $UpgradeTimer
 @onready var attack_timer: Timer = $AttackTimer
+const MAX_UPGRADE_VERSION: int = 3
 const LINE_BULLET = preload("res://bullets/line_bullet.tscn")
-var upgrade_version: int = 2
+var upgrade_version: int = 1
 # Define the width and length of each rectangle (adjust for size)
 var width: int = 4
 var length: int = 10
 var radius: int = 4  # radius of circle body
+var paused: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	upgrade_timer.timeout.connect(on_upgrade_timer_timeout)
+	add_to_group("turrets")
+	upgrade_timer.timeout.connect(upgrade_turret)
 	attack_timer.timeout.connect(on_attack_timer_timeout)
-	# fire.call_deferred() # fire once as soon as physics processing starts
+	Events.turret_added.emit(self)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	queue_redraw()
-
 
 func _draw():
 	match upgrade_version:
@@ -39,41 +42,71 @@ func _draw():
 			draw_rect(Rect2(-length / 2.0, -width / 2.0, length, width), Color.WHITE)
 			draw_circle(Vector2.ZERO, radius, Color.WHITE)
 
+func pause() -> void:
+	upgrade_timer.paused = true
+	attack_timer.paused = true
+
+func resume() -> void:
+	upgrade_timer.paused = false
+	attack_timer.paused = false
+
 
 func set_upgrade_version(ver: int):
 	upgrade_version = ver
 
 
 func fire():
-	# upgrade version 1: shoot 2 bullets with speed 100
-	var num_bullets: int = 2
 	var bullet_speed: int = 60
+	var angles: Array[float] = []
+	var bullet_damage: int = 2
 	match upgrade_version:
+		1:
+			# shoot upwards
+			angles = [-90]
 		2:
 			# shoot in 4 directions
-			num_bullets = 4
 			bullet_speed = 100
+			angles = [0, 90, 180, 270]
+			bullet_damage = 3
 		3:
-			# shoot in a circle
-			num_bullets = 8
+			# shoot 3 upwards
 			bullet_speed = 150
+			var base_angle: int = 270
+			var spread_angle: int = 25
+			angles = [base_angle-spread_angle, base_angle, base_angle+spread_angle]
+			bullet_damage = 4
+		"unused":
+			# shoot in a circle
+			var num_bullets = 8
+			bullet_speed = 150
+			for i in num_bullets:
+				var bullet = LINE_BULLET.instantiate()
+				bullet.global_position = global_position
+				bullet.speed = bullet_speed
+				var shoot_direction: Vector2 = Vector2.UP.rotated(TAU * i / num_bullets)
+				bullet.look_at(to_global(shoot_direction))
+				get_parent().add_child(bullet)
 
-	for i in num_bullets:
-		var bullet = LINE_BULLET.instantiate()
+	for angle in angles:
+		var bullet: Node2D = LINE_BULLET.instantiate()
 		bullet.global_position = global_position
 		bullet.speed = bullet_speed
-		var shoot_direction: Vector2 = Vector2.UP.rotated(TAU * i / num_bullets)
-		bullet.look_at(to_global(shoot_direction))
-		get_parent().add_child(bullet)
+		bullet.rotate(deg_to_rad(angle))
+		bullet.damage = bullet_damage
+		get_tree().root.add_child(bullet)
 
 
-func on_upgrade_timer_timeout():
-	if upgrade_version < 3:
-		set_upgrade_version(upgrade_version + 1)
-	# elif upgrade_version == 3:
-	# destroy turret
-	# queue_free()
-
+func upgrade_turret():
+	if upgrade_version >= MAX_UPGRADE_VERSION:
+		return
+	set_upgrade_version(upgrade_version + 1)
+	match upgrade_version:
+		2:
+			# double attack speed
+			attack_timer.wait_time /= 2
+		3:
+			# double attack speed
+			attack_timer.wait_time /= 2
 
 func on_attack_timer_timeout():
 	fire()

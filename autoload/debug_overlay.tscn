@@ -1,10 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://ul1l40ldt1w6"]
+[gd_scene load_steps=3 format=3 uid="uid://ul1l40ldt1w6"]
 
 [ext_resource type="Script" path="res://autoload/debug_overlay.gd" id="1_7w6dv"]
+[ext_resource type="FontFile" uid="uid://bu1wn0se8b3nc" path="res://resources/m5x7.ttf" id="2_5yoxq"]
 
 [node name="DebugOverlay" type="CanvasLayer"]
 script = ExtResource("1_7w6dv")
 
 [node name="DebugData" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 320.0
+offset_bottom = 180.0
+theme_override_fonts/font = ExtResource("2_5yoxq")
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 2

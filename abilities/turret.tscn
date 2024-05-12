@@ -6,10 +6,9 @@
 script = ExtResource("1_8iwik")
 
 [node name="UpgradeTimer" type="Timer" parent="."]
-process_callback = 0
-wait_time = 5.0
+wait_time = 20.0
 autostart = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-process_callback = 0
+wait_time = 2.0
 autostart = true
