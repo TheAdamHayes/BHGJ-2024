@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cogqfbfvidlby"]
+
+[ext_resource type="Script" path="res://bullets/line_bullet.gd" id="1_krb8p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83g6v"]
+size = Vector2(7, 3)
+
+[node name="LineBullet" type="Node2D"]
+script = ExtResource("1_krb8p")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_83g6v")
+
+[node name="LifeTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
