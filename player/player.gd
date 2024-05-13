@@ -1,35 +1,77 @@
 extends CharacterBody2D
+
 @onready var health_component = $HealthComponent
 
 const TURRET = preload("res://abilities/turret.tscn")
+const LINE_BULLET = preload("res://bullets/line_bullet.tscn")
 var speed = 100
 var invincible: bool = false
-
+var time_since_last_fire: float = 0.0
+var fire_rate: float = 0.5  # Adjust this value to control the fire rate (in seconds)
+var available_turrets: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.player = self
 	health_component.health_changed.connect(on_health_changed)
 
-
 func _input(_event):
-	if Input.is_action_just_pressed("left_click"):
-		pass
-	if Input.is_action_just_pressed("right_click"):
-		pass
 	if Input.is_action_just_pressed("spacebar"):
-		var turret = TURRET.instantiate()
-		turret.global_position = global_position
-		get_parent().add_child(turret)
+		if available_turrets > 0:
+			var turret = TURRET.instantiate()
+			turret.global_position = global_position
+			get_parent().add_child(turret)
+			available_turrets -= 1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	queue_redraw()
+	if Input.is_action_pressed("attack") and time_since_last_fire >= fire_rate:
+		shoot_type1()
+		time_since_last_fire = 0
+	if Input.is_action_pressed("attack2") and time_since_last_fire >= fire_rate:
+		shoot_type2()
+		time_since_last_fire = 0
+	time_since_last_fire += delta		
 	velocity = get_input_direction() * speed
 	move_and_slide()
 	stay_in_viewport()
 
+func shoot_type1() -> void:
+	# shoot two bullets in a straight line 
+	var bullet: Node2D = LINE_BULLET.instantiate()
+	bullet.global_position = global_position - Vector2(5, 0)
+	bullet.rotate(deg_to_rad(270))
+	bullet.speed = 200
+	bullet.damage = 2
+	bullet.color = Color.YELLOW
+	get_tree().root.add_child(bullet)
+	bullet.set_attack_type("enemy")
+
+	var bullet2: Node2D = LINE_BULLET.instantiate()
+	bullet2.global_position = global_position + Vector2(5, 0)
+	bullet2.rotate(deg_to_rad(270))
+	bullet2.speed = 150
+	bullet2.damage = 2
+	bullet2.color = Color.YELLOW
+	get_tree().root.add_child(bullet2)
+	bullet2.set_attack_type("enemy")
+
+func shoot_type2() -> void:
+	# shoot 3 bullets in a spread
+	var base_angle: int = 270
+	var spread_angle: int = 25
+	var angles: Array[float] = [base_angle-spread_angle, base_angle, base_angle+spread_angle]
+	for angle in angles:
+		var bullet: Node2D = LINE_BULLET.instantiate()
+		bullet.global_position = global_position
+		bullet.speed = 100
+		bullet.rotate(deg_to_rad(angle))
+		bullet.damage = 2
+		bullet.color = Color.YELLOW
+		get_tree().root.add_child(bullet)
+		bullet.set_attack_type("enemy")
 
 func get_input_direction() -> Vector2:
 	var x_movement: float = Input.get_action_strength("right") - Input.get_action_strength("left")

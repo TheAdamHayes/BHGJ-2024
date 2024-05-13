@@ -8,6 +8,7 @@ var contact_damage: int = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	add_to_group("enemies")
 	velocity = Vector2.ZERO
 	health_component.health_changed.connect(on_health_changed)
 	hitbox.body_entered.connect(on_hitbox_body_entered)
@@ -16,9 +17,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	queue_redraw()
-	if is_instance_valid(Global.player):
-		var direction = global_position.direction_to(Global.player.global_position)
-		velocity = direction * speed
+	var direction = Vector2.DOWN
+	velocity = direction * speed
 	move_and_slide()
 
 
