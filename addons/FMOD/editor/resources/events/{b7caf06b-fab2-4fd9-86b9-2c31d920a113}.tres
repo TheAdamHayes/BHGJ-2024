@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://bhsjxvy74h6e2"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Enemy/SimpleShot"
+guid = "{b7caf06b-fab2-4fd9-86b9-2c31d920a113}"
+name = "SimpleShot"

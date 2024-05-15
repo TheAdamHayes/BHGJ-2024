@@ -2,3 +2,4 @@
 .godot/
 .DS_Store
 /addons/FMOD/editor/cache
+addons/FMOD/editor/cache/fmod_project_cache.tres

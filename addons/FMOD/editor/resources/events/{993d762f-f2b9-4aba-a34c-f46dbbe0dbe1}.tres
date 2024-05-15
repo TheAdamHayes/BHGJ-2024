@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://bil8r43pt1bf1"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Environment/LowHealth"
+guid = "{993d762f-f2b9-4aba-a34c-f46dbbe0dbe1}"
+name = "LowHealth"

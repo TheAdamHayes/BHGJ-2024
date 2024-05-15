@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://cnrb6i0xf34ja"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/UI/Hover"
+guid = "{70111858-2160-41f4-bcfa-bbf559687512}"
+name = "Hover"

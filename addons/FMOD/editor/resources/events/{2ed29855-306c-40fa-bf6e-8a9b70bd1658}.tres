@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://dgt4srg6865j4"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Player/TripleShot"
+guid = "{2ed29855-306c-40fa-bf6e-8a9b70bd1658}"
+name = "TripleShot"

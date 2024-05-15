@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://by50p5bimb22b"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/MUSIC/Level1_Battle"
+guid = "{7cc75bb5-6913-4415-9e50-44bee1d70846}"
+name = "Level1_Battle"

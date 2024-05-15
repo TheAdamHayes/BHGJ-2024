@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://cl1vviqgxmqgk"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/UI/UpgradeMenuSelection"
+guid = "{173a8ce7-6c74-483d-baeb-d8fdaf5d83ba}"
+name = "UpgradeMenuSelection"

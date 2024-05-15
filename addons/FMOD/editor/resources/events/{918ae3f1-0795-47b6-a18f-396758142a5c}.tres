@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://dw586dlrwcnck"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Environment/LevelComplete"
+guid = "{918ae3f1-0795-47b6-a18f-396758142a5c}"
+name = "LevelComplete"
