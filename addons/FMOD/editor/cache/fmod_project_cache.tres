@@ -1,59 +1,295 @@
-[gd_resource type="ProjectCache" load_steps=7 format=3 uid="uid://d2j3oig22n5d1"]
+[gd_resource type="ProjectCache" load_steps=20 format=3 uid="uid://d2j3oig22n5d1"]
 
-[ext_resource type="MissingResource" uid="uid://ba4p07m3f6sec" path="res://addons/FMOD/editor/resources/banks/{10760570-9dbf-412d-a528-17d827d0771c}.tres" id="1_r23t3"]
-[ext_resource type="MissingResource" uid="uid://dj6ch0k17e35d" path="res://addons/FMOD/editor/resources/banks/{886b25a4-ecc4-0d6f-2361-9d26d6237184}.tres" id="2_y36sh"]
-[ext_resource type="MissingResource" uid="uid://b0e7kakcbmiyo" path="res://addons/FMOD/editor/resources/busses/{0bb11436-0d1c-435e-a783-9e2c9e8bdf1b}.tres" id="3_1q5se"]
-[ext_resource type="MissingResource" uid="uid://fanqyt4ls28m" path="res://addons/FMOD/editor/resources/busses/{aa265751-69e6-4b6c-8bc1-e69948c12178}.tres" id="4_ylkfq"]
-[ext_resource type="MissingResource" uid="uid://bir2j655tt245" path="res://addons/FMOD/editor/resources/events/{4cb20c3b-5616-431d-adf5-849ebfa0e8e0}.tres" id="5_gui4f"]
+[ext_resource type="BankAsset" uid="uid://bx5c24k82esp1" path="res://addons/FMOD/editor/resources/banks/{df603525-ade5-4b4c-9a41-4a58ed07e32e}.tres" id="1_s5a3q"]
+[ext_resource type="BankAsset" uid="uid://bocdahcax82xu" path="res://addons/FMOD/editor/resources/banks/{477d15f1-dc9e-070e-1c08-c0a61cf4e5b6}.tres" id="2_osc2k"]
+[ext_resource type="BusAsset" uid="uid://chax03ejchap3" path="res://addons/FMOD/editor/resources/busses/{df400856-a9a1-4983-826f-9840842e7364}.tres" id="3_nrbxo"]
+[ext_resource type="BusAsset" uid="uid://bqls31e7i8ojh" path="res://addons/FMOD/editor/resources/busses/{2b4cc931-6eee-4dbb-a1c2-33bd15dcd67e}.tres" id="4_jy8n0"]
 
-[sub_resource type="EventAsset" id="EventAsset_8noku"]
-resource_local_to_scene = false
-resource_name = ""
+[sub_resource type="EventAsset" id="EventAsset_deec4"]
 is_oneshot = true
 min_distance = 1.0
 max_distance = 20.0
-path = "event:/TestEvent 2"
-guid = "{83066a03-ddb7-4ab7-8391-6628edc3afae}"
-name = "TestEvent 2"
+path = "event:/MUSIC/Level1_Battle"
+guid = "{7cc75bb5-6913-4415-9e50-44bee1d70846}"
+name = "Level1_Battle"
+
+[sub_resource type="EventAsset" id="EventAsset_rm4ro"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Enemy/Death"
+guid = "{438c883a-75b8-4654-a510-fb4bc68525a7}"
+name = "Death"
+
+[sub_resource type="EventAsset" id="EventAsset_tp1mi"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Enemy/SimpleShot"
+guid = "{b7caf06b-fab2-4fd9-86b9-2c31d920a113}"
+name = "SimpleShot"
+
+[sub_resource type="EventAsset" id="EventAsset_eocib"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Environment/LevelBegin"
+guid = "{291a8c5f-8d67-4167-909c-fbdab6566e93}"
+name = "LevelBegin"
+
+[sub_resource type="EventAsset" id="EventAsset_q8v45"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Environment/LevelComplete"
+guid = "{918ae3f1-0795-47b6-a18f-396758142a5c}"
+name = "LevelComplete"
+
+[sub_resource type="EventAsset" id="EventAsset_txipi"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Environment/LowHealth"
+guid = "{993d762f-f2b9-4aba-a34c-f46dbbe0dbe1}"
+name = "LowHealth"
+
+[sub_resource type="EventAsset" id="EventAsset_rjs4x"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Environment/PlayerDeath"
+guid = "{d8e60467-7e8b-4323-a744-45dec16eb27a}"
+name = "PlayerDeath"
+
+[sub_resource type="EventAsset" id="EventAsset_71fi7"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Environment/WaveComplete"
+guid = "{9f4016bc-f21d-4adc-8a30-0546361a0fb5}"
+name = "WaveComplete"
+
+[sub_resource type="EventAsset" id="EventAsset_2pwc7"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Player/Movement"
+guid = "{49717e3c-b2de-47ec-a66f-cd4e79571d0f}"
+name = "Movement"
+
+[sub_resource type="EventAsset" id="EventAsset_ayqxt"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Player/SimpleShot"
+guid = "{aee7ce83-e5c0-41bd-ade7-8f25b3f0ac59}"
+name = "SimpleShot"
+
+[sub_resource type="EventAsset" id="EventAsset_xbojx"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Player/TripleShot"
+guid = "{2ed29855-306c-40fa-bf6e-8a9b70bd1658}"
+name = "TripleShot"
+
+[sub_resource type="EventAsset" id="EventAsset_p06t0"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Player/TurretShot"
+guid = "{5a1c03f0-459a-46d4-92b4-cc0698be12e3}"
+name = "TurretShot"
+
+[sub_resource type="EventAsset" id="EventAsset_6uh74"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/UI/Hover"
+guid = "{70111858-2160-41f4-bcfa-bbf559687512}"
+name = "Hover"
+
+[sub_resource type="EventAsset" id="EventAsset_bh5el"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/UI/Selection"
+guid = "{8b54b777-8f67-492c-bf7d-b892ee10dbc9}"
+name = "Selection"
+
+[sub_resource type="EventAsset" id="EventAsset_cj52e"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/UI/UpgradeMenuSelection"
+guid = "{173a8ce7-6c74-483d-baeb-d8fdaf5d83ba}"
+name = "UpgradeMenuSelection"
 
 [resource]
 banks = {
-"{10760570-9dbf-412d-a528-17d827d0771c}": ExtResource("1_r23t3"),
-"{886b25a4-ecc4-0d6f-2361-9d26d6237184}": ExtResource("2_y36sh")
+"{477d15f1-dc9e-070e-1c08-c0a61cf4e5b6}": ExtResource("2_osc2k"),
+"{df603525-ade5-4b4c-9a41-4a58ed07e32e}": ExtResource("1_s5a3q")
 }
 events = {
-"{4cb20c3b-5616-431d-adf5-849ebfa0e8e0}": ExtResource("5_gui4f"),
-"{83066a03-ddb7-4ab7-8391-6628edc3afae}": SubResource("EventAsset_8noku")
+"{173a8ce7-6c74-483d-baeb-d8fdaf5d83ba}": SubResource("EventAsset_cj52e"),
+"{291a8c5f-8d67-4167-909c-fbdab6566e93}": SubResource("EventAsset_eocib"),
+"{2ed29855-306c-40fa-bf6e-8a9b70bd1658}": SubResource("EventAsset_xbojx"),
+"{438c883a-75b8-4654-a510-fb4bc68525a7}": SubResource("EventAsset_rm4ro"),
+"{49717e3c-b2de-47ec-a66f-cd4e79571d0f}": SubResource("EventAsset_2pwc7"),
+"{5a1c03f0-459a-46d4-92b4-cc0698be12e3}": SubResource("EventAsset_p06t0"),
+"{70111858-2160-41f4-bcfa-bbf559687512}": SubResource("EventAsset_6uh74"),
+"{7cc75bb5-6913-4415-9e50-44bee1d70846}": SubResource("EventAsset_deec4"),
+"{8b54b777-8f67-492c-bf7d-b892ee10dbc9}": SubResource("EventAsset_bh5el"),
+"{918ae3f1-0795-47b6-a18f-396758142a5c}": SubResource("EventAsset_q8v45"),
+"{993d762f-f2b9-4aba-a34c-f46dbbe0dbe1}": SubResource("EventAsset_txipi"),
+"{9f4016bc-f21d-4adc-8a30-0546361a0fb5}": SubResource("EventAsset_71fi7"),
+"{aee7ce83-e5c0-41bd-ade7-8f25b3f0ac59}": SubResource("EventAsset_ayqxt"),
+"{b7caf06b-fab2-4fd9-86b9-2c31d920a113}": SubResource("EventAsset_tp1mi"),
+"{d8e60467-7e8b-4323-a744-45dec16eb27a}": SubResource("EventAsset_rjs4x")
 }
 busses = {
-"{0bb11436-0d1c-435e-a783-9e2c9e8bdf1b}": ExtResource("3_1q5se"),
-"{aa265751-69e6-4b6c-8bc1-e69948c12178}": ExtResource("4_ylkfq")
+"{2b4cc931-6eee-4dbb-a1c2-33bd15dcd67e}": ExtResource("4_jy8n0"),
+"{df400856-a9a1-4983-826f-9840842e7364}": ExtResource("3_nrbxo")
 }
 bank_tree = [{
 "children": [],
 "item_type": 3,
 "node_name": "Master",
 "path": "bank:/Master",
-"resource": ExtResource("1_r23t3")
+"resource": ExtResource("1_s5a3q")
 }, {
 "children": [],
 "item_type": 3,
 "node_name": "Master.strings",
 "path": "bank:/Master.strings",
-"resource": ExtResource("2_y36sh")
+"resource": ExtResource("2_osc2k")
 }]
 event_tree = [{
+"children": [{
 "children": [],
 "item_type": 1,
-"node_name": "TestEvent",
-"path": "event:/TestEvent",
-"resource": ExtResource("5_gui4f")
+"node_name": "Level1_Battle",
+"path": "event:/MUSIC/Level1_Battle",
+"resource": SubResource("EventAsset_deec4")
+}],
+"item_type": 7,
+"node_name": "MUSIC",
+"path": "",
+"resource": null
+}, {
+"children": [{
+"children": [{
+"children": [],
+"item_type": 1,
+"node_name": "Death",
+"path": "event:/SFX/Enemy/Death",
+"resource": SubResource("EventAsset_rm4ro")
 }, {
 "children": [],
 "item_type": 1,
-"node_name": "TestEvent 2",
-"path": "event:/TestEvent 2",
-"resource": SubResource("EventAsset_8noku")
+"node_name": "SimpleShot",
+"path": "event:/SFX/Enemy/SimpleShot",
+"resource": SubResource("EventAsset_tp1mi")
+}],
+"item_type": 7,
+"node_name": "Enemy",
+"path": "",
+"resource": null
+}, {
+"children": [{
+"children": [],
+"item_type": 1,
+"node_name": "LevelBegin",
+"path": "event:/SFX/Environment/LevelBegin",
+"resource": SubResource("EventAsset_eocib")
+}, {
+"children": [],
+"item_type": 1,
+"node_name": "LevelComplete",
+"path": "event:/SFX/Environment/LevelComplete",
+"resource": SubResource("EventAsset_q8v45")
+}, {
+"children": [],
+"item_type": 1,
+"node_name": "LowHealth",
+"path": "event:/SFX/Environment/LowHealth",
+"resource": SubResource("EventAsset_txipi")
+}, {
+"children": [],
+"item_type": 1,
+"node_name": "PlayerDeath",
+"path": "event:/SFX/Environment/PlayerDeath",
+"resource": SubResource("EventAsset_rjs4x")
+}, {
+"children": [],
+"item_type": 1,
+"node_name": "WaveComplete",
+"path": "event:/SFX/Environment/WaveComplete",
+"resource": SubResource("EventAsset_71fi7")
+}],
+"item_type": 7,
+"node_name": "Environment",
+"path": "",
+"resource": null
+}, {
+"children": [{
+"children": [],
+"item_type": 1,
+"node_name": "Movement",
+"path": "event:/SFX/Player/Movement",
+"resource": SubResource("EventAsset_2pwc7")
+}, {
+"children": [],
+"item_type": 1,
+"node_name": "SimpleShot",
+"path": "event:/SFX/Player/SimpleShot",
+"resource": SubResource("EventAsset_ayqxt")
+}, {
+"children": [],
+"item_type": 1,
+"node_name": "TripleShot",
+"path": "event:/SFX/Player/TripleShot",
+"resource": SubResource("EventAsset_xbojx")
+}, {
+"children": [],
+"item_type": 1,
+"node_name": "TurretShot",
+"path": "event:/SFX/Player/TurretShot",
+"resource": SubResource("EventAsset_p06t0")
+}],
+"item_type": 7,
+"node_name": "Player",
+"path": "",
+"resource": null
+}, {
+"children": [{
+"children": [],
+"item_type": 1,
+"node_name": "Hover",
+"path": "event:/SFX/UI/Hover",
+"resource": SubResource("EventAsset_6uh74")
+}, {
+"children": [],
+"item_type": 1,
+"node_name": "Selection",
+"path": "event:/SFX/UI/Selection",
+"resource": SubResource("EventAsset_bh5el")
+}, {
+"children": [],
+"item_type": 1,
+"node_name": "UpgradeMenuSelection",
+"path": "event:/SFX/UI/UpgradeMenuSelection",
+"resource": SubResource("EventAsset_cj52e")
+}],
+"item_type": 7,
+"node_name": "UI",
+"path": "",
+"resource": null
+}],
+"item_type": 7,
+"node_name": "SFX",
+"path": "",
+"resource": null
 }]
 bus_tree = [{
 "children": [{
@@ -61,10 +297,10 @@ bus_tree = [{
 "item_type": 4,
 "node_name": "Reverb",
 "path": "bus:/Reverb",
-"resource": ExtResource("4_ylkfq")
+"resource": ExtResource("4_jy8n0")
 }],
 "item_type": 4,
 "node_name": "bus:",
 "path": "bus:/",
-"resource": ExtResource("3_1q5se")
+"resource": ExtResource("3_nrbxo")
 }]

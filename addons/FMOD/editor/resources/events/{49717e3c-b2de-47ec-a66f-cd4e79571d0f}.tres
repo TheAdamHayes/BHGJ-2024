@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://73r8lh7x86wy"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Player/Movement"
+guid = "{49717e3c-b2de-47ec-a66f-cd4e79571d0f}"
+name = "Movement"

@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://dy583unqypr5q"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Environment/WaveComplete"
+guid = "{9f4016bc-f21d-4adc-8a30-0546361a0fb5}"
+name = "WaveComplete"
