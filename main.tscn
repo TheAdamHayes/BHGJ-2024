@@ -43,6 +43,8 @@ color = Color(0.7, 0.14, 0.14, 1)
 
 [node name="GameCamera" parent="." instance=ExtResource("4_dybw0")]
 
+[node name="StudioListener3D" type="StudioListener3D" parent="GameCamera"]
+
 [node name="NextWaveTimer" type="Timer" parent="."]
 wait_time = 15.0
 one_shot = true

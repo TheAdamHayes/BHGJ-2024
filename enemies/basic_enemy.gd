@@ -36,6 +36,7 @@ func on_health_changed(new_health_amount: int) -> void:
 
 
 func die() -> void:
+	FMODRuntime.play_one_shot_path("event:/SFX/Enemy/Death")
 	Events.emit_signal("update_score", 10, "add")
 	queue_free()
 

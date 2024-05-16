@@ -39,6 +39,7 @@ func _process(delta):
 	stay_in_viewport()
 
 func shoot_type1() -> void:
+	FMODRuntime.play_one_shot_path("event:/SFX/Player/SimpleShot")
 	# shoot two bullets in a straight line 
 	var bullet: Node2D = LINE_BULLET.instantiate()
 	bullet.global_position = global_position - Vector2(5, 0)
@@ -59,6 +60,7 @@ func shoot_type1() -> void:
 	bullet2.set_attack_type("enemy")
 
 func shoot_type2() -> void:
+	FMODRuntime.play_one_shot_path("event:/SFX/Player/TripleShot")
 	# shoot 3 bullets in a spread
 	var base_angle: int = 270
 	var spread_angle: int = 25
