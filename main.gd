@@ -14,7 +14,7 @@ var wave_in_progress: bool = false
 func _ready():
 	next_wave_timer.timeout.connect(on_next_wave_timer_timeout)
 	defend_zone.body_entered.connect(on_defend_zone_entered)
-	Debug.write("Instructions", "arrow keys to move, space to place turret, Z and X to fire. Don't let the enemies touch the red zone")
+	Debug.write("Instructions", "arrow keys to move, space to place turret, Z and X to fire. C to freeze bomb. Don't let the enemies touch the red zone")
 	Events.turret_added.connect(on_turret_added, CONNECT_DEFERRED)
 	on_next_wave_timer_timeout.call_deferred() # start waves
 
@@ -96,6 +96,7 @@ func setup_next_wave() -> void:
 func on_next_wave_timer_timeout() -> void:
 	# Stop all spawners and turrets, and kill all enemies
 	wave_in_progress = false
+	Events.wave_ended.emit()
 	get_tree().call_group("enemies", "queue_free")
 	get_tree().call_group("spawners", "pause")
 	get_tree().call_group("turrets", "pause")

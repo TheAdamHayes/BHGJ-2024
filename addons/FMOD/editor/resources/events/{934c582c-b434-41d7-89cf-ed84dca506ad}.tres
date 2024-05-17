@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://bgfawuncg8s6s"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/SFX/Environment/TurretAdded"
+guid = "{934c582c-b434-41d7-89cf-ed84dca506ad}"
+name = "TurretAdded"
