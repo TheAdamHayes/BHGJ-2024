@@ -1,5 +1,10 @@
 class_name DamageSource extends RefCounted
 
+var damageValue: int
+
+func _init(damageValue:int = 2):
+	damage = damageValue
+
 enum StatusEffect {
 	None, # Default value
 	Freeze,
