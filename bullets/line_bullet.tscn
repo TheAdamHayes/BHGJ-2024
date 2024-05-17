@@ -6,6 +6,7 @@
 size = Vector2(7, 3)
 
 [node name="LineBullet" type="Node2D"]
+z_index = 1
 script = ExtResource("1_krb8p")
 
 [node name="Hitbox" type="Area2D" parent="."]

@@ -45,5 +45,7 @@ func set_attack_type(type: String):
 
 func on_bullet_hit(collider):
 	if collider.has_method("take_damage"):
-		collider.take_damage(damage)
+		var damage_source: DamageSource = DamageSource.new()
+		damage_source.damage = damage
+		collider.take_damage(damage_source)
 	queue_free()
