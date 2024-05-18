@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqfxqgmedkaqr"]
+
+[ext_resource type="Script" path="res://autoload/audio_manager.gd" id="1_x3fsa"]
+
+[sub_resource type="EventAsset" id="EventAsset_deec4"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/MUSIC/Level1_Battle"
+guid = "{7cc75bb5-6913-4415-9e50-44bee1d70846}"
+name = "Level1_Battle"
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_x3fsa")
+
+[node name="SceneMusicPlayer" type="StudioEventEmitter2D" parent="."]
+play_event = 1
+event = SubResource("EventAsset_deec4")

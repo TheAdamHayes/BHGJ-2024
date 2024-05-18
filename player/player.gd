@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
-@onready var health_component = $HealthComponent
-
+const FREEZE_BOMB = preload("res://abilities/freeze_bomb.tscn")
 const TURRET = preload("res://abilities/turret.tscn")
 const LINE_BULLET = preload("res://bullets/line_bullet.tscn")
 
@@ -13,6 +12,8 @@ var fire_rate: float = 0.5  # Adjust this value to control the fire rate (in sec
 var available_turrets: int = 0
 var shop: bool = false
 
+@onready var health_component = $HealthComponent
+@onready var bomb_cooldown: Timer = $BombCooldown
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.player = self
@@ -27,6 +28,8 @@ func _input(_event):
 			turret.global_position = global_position
 			get_parent().add_child(turret)
 			available_turrets -= 1
+	if Input.is_action_just_pressed("bomb"):
+		shoot_freeze_bomb()
 
 	if Input.is_action_just_pressed("shop") and shop == false:
 		print(str(shop))
@@ -54,9 +57,12 @@ func _process(delta):
 	velocity = get_input_direction() * speed
 	move_and_slide()
 	stay_in_viewport()
+	Debug.write("Freeze bomb cooldown", int(bomb_cooldown.time_left))
 
 func shoot_type1() -> void:
-	# shoot two bullets in a straight line
+
+	FMODRuntime.play_one_shot_path("event:/SFX/Player/SimpleShot")
+	# shoot two bullets in a straight line 
 	var bullet: Node2D = LINE_BULLET.instantiate()
 	bullet.global_position = global_position - Vector2(5, 0)
 	bullet.rotate(deg_to_rad(270))
@@ -76,6 +82,7 @@ func shoot_type1() -> void:
 	bullet2.set_attack_type("enemy")
 
 func shoot_type2() -> void:
+	FMODRuntime.play_one_shot_path("event:/SFX/Player/TripleShot")
 	# shoot 3 bullets in a spread
 	var base_angle: int = 270
 	var spread_angle: int = 25
@@ -90,6 +97,20 @@ func shoot_type2() -> void:
 		get_tree().root.add_child(bullet)
 		bullet.set_attack_type("enemy")
 
+func shoot_freeze_bomb() -> void:
+	FMODRuntime.play_one_shot_path("event:/SFX/Player/FreezeBomb")
+	if !bomb_cooldown.is_stopped():
+		# bomb is on cooldown
+		return
+	var freeze_bomb = FREEZE_BOMB.instantiate()
+	freeze_bomb.global_position = global_position
+	freeze_bomb.speed = 100
+	freeze_bomb.damage = 1
+	freeze_bomb.rotate(deg_to_rad(270))
+	get_parent().add_child(freeze_bomb)
+	bomb_cooldown.start()
+
+
 func get_input_direction() -> Vector2:
 	var x_movement: float = Input.get_action_strength("right") - Input.get_action_strength("left")
 	var y_movement: float = Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -98,9 +119,10 @@ func get_input_direction() -> Vector2:
 func _draw():
 	draw_circle(Vector2.ZERO, 3, Color.HOT_PINK)
 
-func take_damage(damage: int) -> void:
+
+func take_damage(damage_source: DamageSource) -> void:
 	if !invincible:
-		health_component.reduce_health(damage)
+		health_component.reduce_health(damage_source.damage)
 		activate_iframe_seconds(2)
 
 # over the next duration seconds, be invincible and flicker visibility
@@ -125,9 +147,11 @@ func on_health_changed(new_health_amount: int) -> void:
 		die()
 
 func die() -> void:
+	FMODRuntime.play_one_shot_path("events:/SFX/Environment/PlayerDeath")
 	queue_free()
 
 func get_health() -> int:
+	FMODRuntime.play_one_shot_path("events:/SFX/Environment/PlayerHeal")
 	return health_component.health
 
 # Hacky way to keep player from leaving screen for fast prototype purposes only
