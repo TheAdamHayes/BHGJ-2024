@@ -36,7 +36,7 @@ func on_health_changed(new_health_amount: int) -> void:
 
 
 func die() -> void:
-	Events.emit_signal("update_score", 10, "add")
+	Events.emit_signal("update_score", 500, "add")
 	queue_free()
 
 

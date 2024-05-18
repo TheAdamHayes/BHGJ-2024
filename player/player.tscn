@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2kn8b8fgmii1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_r2vut"]
-[ext_resource type="PackedScene" uid="uid://6pq7txmq8qn0" path="res://components/health_component.tscn" id="2_vgw2q"]
+[ext_resource type="PackedScene" uid="uid://6pq7txmq8qn0" path="res://components/health/health_component.tscn" id="2_vgw2q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bxk17"]
 radius = 3.0

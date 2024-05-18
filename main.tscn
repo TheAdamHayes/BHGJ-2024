@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://lpwwjs7vfskc"]
+[gd_scene load_steps=8 format=3 uid="uid://lpwwjs7vfskc"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_0cnj1"]
 [ext_resource type="PackedScene" uid="uid://c2kn8b8fgmii1" path="res://player/player.tscn" id="2_s0u70"]
-[ext_resource type="PackedScene" uid="uid://drgaacr8tvtlv" path="res://components/game_camera.tscn" id="4_dybw0"]
-[ext_resource type="PackedScene" uid="uid://d4idcibmfenoy" path="res://components/ui_score_manager.tscn" id="6_0bj0f"]
-[ext_resource type="Script" path="res://components/game_score_manager.gd" id="7_naspo"]
+[ext_resource type="PackedScene" uid="uid://drgaacr8tvtlv" path="res://components/Game Camera/game_camera.tscn" id="4_dybw0"]
+[ext_resource type="PackedScene" uid="uid://d4idcibmfenoy" path="res://components/game score/ui_score_manager.tscn" id="6_0bj0f"]
+[ext_resource type="PackedScene" uid="uid://dhfdrl1d6jwmn" path="res://components/shop/shop.tscn" id="6_i6fsj"]
+[ext_resource type="Script" path="res://components/game score/game_score_manager.gd" id="7_naspo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lan7s"]
 size = Vector2(320, 30)
@@ -54,3 +55,6 @@ one_shot = true
 
 [node name="score_manager" parent="CanvasLayer" instance=ExtResource("6_0bj0f")]
 offset_bottom = 1.0
+
+[node name="shop" parent="CanvasLayer" instance=ExtResource("6_i6fsj")]
+visible = false
