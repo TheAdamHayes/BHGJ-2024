@@ -9,7 +9,7 @@ enum State {
 @onready var hitbox = $Hitbox
 @onready var freeze_timer: Timer = $FreezeTimer
 var speed = 20
-var contact_damage: int = 2
+var contact_damage = DamageSource.new(2)
 var state: State = State.Moving
 
 @export var points: int = 10

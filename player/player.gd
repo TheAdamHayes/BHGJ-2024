@@ -80,6 +80,7 @@ func shoot_type2() -> void:
 		bullet.set_attack_type("enemy")
 
 func shoot_freeze_bomb() -> void:
+	FMODRuntime.play_one_shot_path("event:/SFX/Player/FreezeBomb")
 	if !bomb_cooldown.is_stopped():
 		# bomb is on cooldown
 		return
@@ -132,10 +133,12 @@ func on_health_changed(new_health_amount: int) -> void:
 
 
 func die() -> void:
+	FMODRuntime.play_one_shot_path("events:/SFX/Environment/PlayerDeath")
 	queue_free()
 
 
 func get_health() -> int:
+	FMODRuntime.play_one_shot_path("events:/SFX/Environment/PlayerHeal")
 	return health_component.health
 
 
