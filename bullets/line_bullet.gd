@@ -30,13 +30,13 @@ func _draw():
 func set_attack_type(type: String):
 	hitbox.set_collision_mask(0)  # reset mask
 	match type:
-		"player": 
+		"player":
 			# attack players
 			hitbox.set_collision_mask_value(1, true)
-		"enemy": 
+		"enemy":
 			# attack enemies
 			hitbox.set_collision_mask_value(2, true)
-		"both": 
+		"both":
 			# attack both player and enemies
 			hitbox.set_collision_mask_value(1, true)
 			hitbox.set_collision_mask_value(2, true)

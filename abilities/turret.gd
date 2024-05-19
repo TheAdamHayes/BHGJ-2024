@@ -18,7 +18,7 @@ func _ready():
 	upgrade_timer.timeout.connect(upgrade_turret)
 	attack_timer.timeout.connect(on_attack_timer_timeout)
 	Events.turret_added.emit(self)
-	
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
