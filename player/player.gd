@@ -4,13 +4,15 @@ const FREEZE_BOMB = preload("res://abilities/freeze_bomb.tscn")
 const TURRET = preload("res://abilities/turret.tscn")
 const LINE_BULLET = preload("res://bullets/line_bullet.tscn")
 
-var speed = 100
+var speed = 1
 
 var invincible: bool = false
 var time_since_last_fire: float = 0.0
 var fire_rate: float = 0.5  # Adjust this value to control the fire rate (in seconds)
 var available_turrets: int = 0
 var shop: bool = false
+
+var speed_upgrade_increase: float = 0.5
 
 @onready var health_component = $HealthComponent
 @onready var bomb_cooldown: Timer = $BombCooldown
@@ -31,17 +33,6 @@ func _input(_event):
 	if Input.is_action_just_pressed("bomb"):
 		shoot_freeze_bomb()
 
-	if Input.is_action_just_pressed("shop") and shop == false:
-		print(str(shop))
-		Events.emit_signal("show_shop")
-		shop = !shop
-		return
-	elif Input.is_action_just_pressed("shop") and shop == true:
-		Events.emit_signal("hide_shop")
-		print(str(shop))
-		shop = !shop
-		return
-
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -55,14 +46,14 @@ func _process(delta):
 		time_since_last_fire = 0
 	time_since_last_fire += delta
 	velocity = get_input_direction() * speed
-	move_and_slide()
+	move_and_collide(get_input_direction() * speed)
 	stay_in_viewport()
 	Debug.write("Freeze bomb cooldown", int(bomb_cooldown.time_left))
 
 func shoot_type1() -> void:
 
 	FMODRuntime.play_one_shot_path("event:/SFX/Player/SimpleShot")
-	# shoot two bullets in a straight line 
+	# shoot two bullets in a straight line
 	var bullet: Node2D = LINE_BULLET.instantiate()
 	bullet.global_position = global_position - Vector2(5, 0)
 	bullet.rotate(deg_to_rad(270))
@@ -163,7 +154,7 @@ func stay_in_viewport():
 	)
 
 func speed_upgrade():
-	speed += 100
+	speed += speed_upgrade_increase
 
 func turret_upgrade():
 	available_turrets += 1

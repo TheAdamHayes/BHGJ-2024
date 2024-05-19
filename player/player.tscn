@@ -1,10 +1,72 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2kn8b8fgmii1"]
+[gd_scene load_steps=16 format=3 uid="uid://c2kn8b8fgmii1"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_r2vut"]
 [ext_resource type="PackedScene" uid="uid://6pq7txmq8qn0" path="res://components/health/health_component.tscn" id="2_vgw2q"]
+[ext_resource type="Texture2D" uid="uid://uf7wcsr0t7bu" path="res://assets/Hero_Bike.png" id="3_opfbh"]
+[ext_resource type="Script" path="res://player/BikeAnimation.gd" id="4_wj70g"]
+[ext_resource type="Texture2D" uid="uid://c47ie4fcx4e2f" path="res://assets/Light_Trail.png" id="5_xmg05"]
+[ext_resource type="Script" path="res://player/LightTrailAnimation.gd" id="6_cpwxe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bxk17"]
 radius = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssc2v"]
+atlas = ExtResource("3_opfbh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgkj5"]
+atlas = ExtResource("3_opfbh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntj8j"]
+atlas = ExtResource("3_opfbh")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wwieb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssc2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgkj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntj8j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfjmr"]
+atlas = ExtResource("5_xmg05")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4y13"]
+atlas = ExtResource("5_xmg05")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pen2k"]
+atlas = ExtResource("5_xmg05")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jrnjw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfjmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4y13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pen2k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -20,3 +82,14 @@ max_health = 10
 [node name="BombCooldown" type="Timer" parent="."]
 wait_time = 8.0
 one_shot = true
+
+[node name="Bike" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_wwieb")
+script = ExtResource("4_wj70g")
+
+[node name="Trail" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 16)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_jrnjw")
+script = ExtResource("6_cpwxe")

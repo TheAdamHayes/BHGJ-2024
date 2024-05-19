@@ -36,16 +36,22 @@ process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="Spacer3" type="Control" parent="VBoxContainer/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 8.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer"]
 process_mode = 3
 layout_mode = 2
 
-[node name="1" type="Button" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer"]
+[node name="1" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -53,34 +59,35 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8i7s0")
 icon_alignment = 1
 script = ExtResource("2_wgq1e")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1"]
 process_mode = 3
 layout_mode = 0
-offset_right = 104.0
+offset_right = 82.0
 offset_bottom = 58.0
 mouse_filter = 2
+theme_override_constants/separation = -12
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/1/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/1/VBoxContainer/HBoxContainer"]
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1/VBoxContainer/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/1/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1/VBoxContainer/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 mouse_filter = 2
 
-[node name="Spacer2" type="TextureRect" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/1/VBoxContainer/HBoxContainer/MarginContainer"]
+[node name="Spacer2" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1/VBoxContainer/HBoxContainer/MarginContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_stretch_ratio = 2.0
@@ -89,29 +96,31 @@ texture = ExtResource("1_iy2h4")
 expand_mode = 1
 stretch_mode = 3
 
-[node name="Spacer3" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/1/VBoxContainer/HBoxContainer"]
+[node name="Spacer3" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1/VBoxContainer/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_lfa0m")
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "[center][font_size=10]500[/font_size][/center]"
+text = "[center]500[/center]"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/1/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/1/VBoxContainer/HBoxContainer2"]
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1/VBoxContainer/HBoxContainer2"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="Spacer2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/1/VBoxContainer/HBoxContainer2"]
+[node name="Spacer2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1/VBoxContainer/HBoxContainer2"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -119,51 +128,51 @@ size_flags_stretch_ratio = 2.0
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("2_lfa0m")
 bbcode_enabled = true
-text = "[center][font_size=16]+1 Turret[/font_size][/center]"
+text = "[center][font_size=16]+1 Drone[/font_size][/center]"
 scroll_active = false
 tab_size = 2
 
-[node name="Spacer3" type="Control" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/1/VBoxContainer/HBoxContainer2"]
+[node name="Spacer3" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1/VBoxContainer/HBoxContainer2"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="2" type="Button" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer"]
+[node name="2" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_wgq1e")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2"]
 process_mode = 3
 layout_mode = 0
-offset_right = 104.0
+offset_right = 82.0
 offset_bottom = 58.0
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/2/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/2/VBoxContainer/HBoxContainer"]
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2/VBoxContainer/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/2/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2/VBoxContainer/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 mouse_filter = 2
 
-[node name="Spacer2" type="TextureRect" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/2/VBoxContainer/HBoxContainer/MarginContainer"]
+[node name="Spacer2" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2/VBoxContainer/HBoxContainer/MarginContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_stretch_ratio = 2.0
@@ -172,29 +181,31 @@ texture = ExtResource("3_xmqkf")
 expand_mode = 1
 stretch_mode = 3
 
-[node name="Spacer4" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/2/VBoxContainer/HBoxContainer"]
+[node name="Spacer3" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2/VBoxContainer/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_lfa0m")
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "[center][font_size=10]500[/font_size][/center]"
+text = "[center]500[/center]"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/2/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/2/VBoxContainer/HBoxContainer2"]
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2/VBoxContainer/HBoxContainer2"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="Spacer2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/2/VBoxContainer/HBoxContainer2"]
+[node name="Spacer2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2/VBoxContainer/HBoxContainer2"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -207,47 +218,47 @@ text = "[center][font_size=16]Freeze Bomb[/font_size][/center]"
 scroll_active = false
 tab_size = 2
 
-[node name="Spacer3" type="Control" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/2/VBoxContainer/HBoxContainer2"]
+[node name="Spacer3" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2/VBoxContainer/HBoxContainer2"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="3" type="Button" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer"]
+[node name="3" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_wgq1e")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3"]
 process_mode = 3
 layout_mode = 0
-offset_right = 104.0
+offset_right = 81.0
 offset_bottom = 58.0
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/3/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/3/VBoxContainer/HBoxContainer"]
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3/VBoxContainer/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/3/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3/VBoxContainer/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 mouse_filter = 2
 
-[node name="Spacer2" type="TextureRect" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/3/VBoxContainer/HBoxContainer/MarginContainer"]
+[node name="Spacer2" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3/VBoxContainer/HBoxContainer/MarginContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_stretch_ratio = 2.0
@@ -256,29 +267,31 @@ texture = ExtResource("4_lm0n8")
 expand_mode = 1
 stretch_mode = 3
 
-[node name="Spacer4" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/3/VBoxContainer/HBoxContainer"]
+[node name="Spacer3" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3/VBoxContainer/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_lfa0m")
+theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
-text = "[center][font_size=9]500[/font_size][/center]"
+text = "[center]500[/center]"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/3/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/3/VBoxContainer/HBoxContainer2"]
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3/VBoxContainer/HBoxContainer2"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="Spacer2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/3/VBoxContainer/HBoxContainer2"]
+[node name="Spacer2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3/VBoxContainer/HBoxContainer2"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -287,23 +300,28 @@ size_flags_stretch_ratio = 2.0
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("2_lfa0m")
 bbcode_enabled = true
-text = "[center][font_size=16]+1 
-Speed[/font_size][/center]"
+text = "[center][font_size=16]+1 Speed[/font_size][/center]"
 scroll_active = false
 tab_size = 2
 
-[node name="Spacer3" type="Control" parent="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/3/VBoxContainer/HBoxContainer2"]
+[node name="Spacer3" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3/VBoxContainer/HBoxContainer2"]
 process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
+[node name="Spacer4" type="Control" parent="VBoxContainer/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
 [node name="Spacer3" type="Control" parent="VBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[connection signal="button_down" from="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/1" to="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/1" method="_on_button_down"]
-[connection signal="button_down" from="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/2" to="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/2" method="_on_button_down"]
-[connection signal="button_down" from="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/3" to="VBoxContainer/HBoxContainer/PanelContainer/HBoxContainer/3" method="_on_button_down"]
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1" to="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1" method="_on_button_down"]
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2" to="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2" method="_on_button_down"]
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3" to="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3" method="_on_button_down"]

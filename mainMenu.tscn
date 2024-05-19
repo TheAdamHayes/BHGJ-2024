@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmf0jd6u2il1r"]
+
+[ext_resource type="Texture2D" uid="uid://pmrbeq7sjk6k" path="res://assets/art/Title-BG.png" id="1_323gb"]
+[ext_resource type="Texture2D" uid="uid://kvs0flhdntda" path="res://assets/art/ui-medium-button.png" id="2_a228q"]
+[ext_resource type="FontFile" uid="uid://d3r6n3muqtmtm" path="res://assets/art/ethnocentric/ethnocentric rg.otf" id="3_o45qw"]
+[ext_resource type="Script" path="res://scripts/Play.gd" id="4_yfd1k"]
+[ext_resource type="Script" path="res://scripts/Quit.gd" id="5_65lpr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qj450"]
+texture = ExtResource("2_a228q")
+
+[sub_resource type="Theme" id="Theme_hxblf"]
+default_font = ExtResource("3_o45qw")
+default_font_size = 32
+Button/styles/normal = SubResource("StyleBoxTexture_qj450")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(160.556, 89.9375)
+scale = Vector2(0.166782, 0.166782)
+texture = ExtResource("1_323gb")
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 107.0
+offset_right = 545.0
+offset_bottom = 174.0
+scale = Vector2(0.28481, 0.28481)
+theme = SubResource("Theme_hxblf")
+text = "PLAY"
+script = ExtResource("4_yfd1k")
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 141.0
+offset_right = 544.0
+offset_bottom = 208.0
+scale = Vector2(0.28481, 0.28481)
+theme = SubResource("Theme_hxblf")
+text = "QUIT"
+script = ExtResource("5_65lpr")
+
+[connection signal="button_down" from="Play" to="Play" method="_on_button_down"]
+[connection signal="mouse_entered" from="Play" to="Play" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Play" to="Play" method="_on_mouse_exited"]
+[connection signal="button_down" from="Quit" to="Quit" method="_on_button_down"]
+[connection signal="mouse_entered" from="Quit" to="Quit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Quit" to="Quit" method="_on_mouse_exited"]

@@ -11,14 +11,17 @@ func _ready():
 	# Hide at start of game
 	self.visible = false
 
+func _input(event):
+	if Input.is_action_just_pressed("shop") and self.visible == true:
+		hide_shop()
+		return
+
 func show_shop():
 	# Put SFX here on shop open
-	print("Show Shop!")
 	self.visible = true
 	get_tree().paused = true
 
 func process_shop(upgrade):
-	print("Processing shop...")
 	pull_score()
 
 	if score < 500:
@@ -37,11 +40,9 @@ func process_shop(upgrade):
 			print("+100 speed!")
 
 	Events.emit_signal("update_score", 500, "subtract")
-	hide_shop()
 
 
 func hide_shop():
-	print("Hide shop!")
 	get_tree().paused = false
 	self.visible = false
 
