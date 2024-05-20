@@ -38,9 +38,11 @@ _data = {
 
 [node name="game_over" type="Control"]
 process_mode = 3
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
+offset_left = -20.0
+offset_right = 20.0
 offset_bottom = 40.0
 script = ExtResource("1_kqeow")
 
