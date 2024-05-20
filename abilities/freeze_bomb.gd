@@ -7,6 +7,8 @@ var speed: int = 0
 @onready var life_timer: Timer = $LifeTimer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Events.emit_signal("freezeBombStatus", "traveling")
+	
 	area_entered.connect(on_bomb_hit)
 	body_entered.connect(on_bomb_hit)
 	life_timer.timeout.connect(queue_free)
@@ -23,6 +25,7 @@ func _draw():
 
 func on_bomb_hit(collider: Node2D):
 	if collider.has_method("take_damage"):
+		Events.emit_signal("freezeBombStatus", "hit")
 		var damage_source: DamageSource = DamageSource.new()
 		damage_source.damage = damage
 		collider.take_damage(damage_source)
@@ -33,3 +36,7 @@ func explode() -> void:
 	explosion.global_position = global_position
 	get_parent().add_child(explosion)
 	queue_free()
+	
+func missExplode():
+	Events.emit_signal("freezeBombStatus", "missed")
+	explode.call_deferred()

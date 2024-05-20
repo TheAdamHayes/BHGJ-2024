@@ -1,0 +1,30 @@
+[gd_resource type="EventAsset" load_steps=4 format=3 uid="uid://ckjcu067n3b25"]
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_m05hn"]
+data1 = 892869731
+data2 = 1979860044
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_s5jwc"]
+name = "TimeFreezeBomb_Status"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_m05hn")
+maximum = 2.0
+flags = 24
+guid = "{1f0f277f-0057-4f59-ba5e-7f963cbdf304}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_n1ybu"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_s5jwc")
+labels = ["Traveling", "Hit", "Missed"]
+path = "parameter:/TimeFreezeBomb_Status"
+guid = "{1f0f277f-0057-4f59-ba5e-7f963cbdf304}"
+name = "TimeFreezeBomb_Status"
+
+[resource]
+is_3d = true
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{1f0f277f-0057-4f59-ba5e-7f963cbdf304}": SubResource("ParameterAsset_n1ybu")
+}
+path = "event:/SFX/Player/TimeFreezeBomb"
+guid = "{63cca832-a305-4ec0-931e-8bea754f477a}"
+name = "TimeFreezeBomb"

@@ -6,6 +6,7 @@ signal update_score(amount, function)
 signal score_changed(new_score)
 signal turret_added(turret: Node2D)
 
+signal freezeBombStatus(status)
 
 signal shop_button_pressed(button)
 
