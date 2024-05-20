@@ -18,3 +18,11 @@ signal show_shop()
 signal hide_shop()
 signal wave_ended
 
+signal level_up_health()
+
+signal new_bomb_amount(amount)
+signal new_speed_amount(amount)
+signal new_turret_amount(amount)
+
+signal new_life_amount(amount)
+signal new_wave_number(number)
