@@ -42,7 +42,7 @@ autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4t8dk")
-frame_progress = 0.0695625
+frame_progress = 0.389249
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

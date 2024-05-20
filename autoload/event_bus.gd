@@ -26,3 +26,9 @@ signal new_turret_amount(amount)
 
 signal new_life_amount(amount)
 signal new_wave_number(number)
+
+signal game_over_score(score)
+
+signal game_over()
+
+signal get_score()

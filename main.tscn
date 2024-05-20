@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://lpwwjs7vfskc"]
+[gd_scene load_steps=25 format=3 uid="uid://lpwwjs7vfskc"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_0cnj1"]
 [ext_resource type="PackedScene" uid="uid://dqfxqgmedkaqr" path="res://autoload/audio_manager.tscn" id="2_iwlhx"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://components/game score/game_score_manager.gd" id="7_naspo"]
 [ext_resource type="Texture2D" uid="uid://buh1ojilca03j" path="res://assets/art/city-skyline.png" id="8_l3csk"]
 [ext_resource type="Texture2D" uid="uid://cx503e3v1qy3u" path="res://assets/art/skyline-divider.png" id="9_beypm"]
+[ext_resource type="PackedScene" uid="uid://bwsrffra0l6a5" path="res://resources/game_over.tscn" id="9_kcjsc"]
 [ext_resource type="Texture2D" uid="uid://c2ys00yrl3uhs" path="res://assets/art/bg-animated/0.png" id="10_nrc0v"]
 [ext_resource type="Texture2D" uid="uid://webhvihbqv0g" path="res://assets/art/bg-animated/1.png" id="11_xriix"]
 [ext_resource type="Texture2D" uid="uid://6gu6wkapsqts" path="res://assets/art/bg-animated/2.png" id="12_lbkps"]
@@ -115,6 +116,9 @@ one_shot = true
 offset_bottom = 1.0
 
 [node name="shop" parent="CanvasLayer" instance=ExtResource("6_i6fsj")]
+visible = false
+
+[node name="game_over" parent="CanvasLayer" instance=ExtResource("9_kcjsc")]
 visible = false
 
 [node name="Background" type="Node2D" parent="."]
