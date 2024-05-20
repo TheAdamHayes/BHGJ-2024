@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://lpwwjs7vfskc"]
+[gd_scene load_steps=24 format=3 uid="uid://lpwwjs7vfskc"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_0cnj1"]
 [ext_resource type="PackedScene" uid="uid://dqfxqgmedkaqr" path="res://autoload/audio_manager.tscn" id="2_iwlhx"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://drgaacr8tvtlv" path="res://components/Game Camera/game_camera.tscn" id="4_dybw0"]
 [ext_resource type="PackedScene" uid="uid://d4idcibmfenoy" path="res://components/game score/ui_score_manager.tscn" id="6_0bj0f"]
 [ext_resource type="PackedScene" uid="uid://dhfdrl1d6jwmn" path="res://components/shop/shop.tscn" id="6_i6fsj"]
+[ext_resource type="PackedScene" uid="uid://dtdlfotlj5oc0" path="res://resources/hud.tscn" id="6_yudug"]
 [ext_resource type="Script" path="res://components/game score/game_score_manager.gd" id="7_naspo"]
 [ext_resource type="Texture2D" uid="uid://buh1ojilca03j" path="res://assets/art/city-skyline.png" id="8_l3csk"]
 [ext_resource type="Texture2D" uid="uid://cx503e3v1qy3u" path="res://assets/art/skyline-divider.png" id="9_beypm"]
@@ -108,6 +109,8 @@ one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="hud" parent="CanvasLayer" instance=ExtResource("6_yudug")]
+
 [node name="score_manager" parent="CanvasLayer" instance=ExtResource("6_0bj0f")]
 offset_bottom = 1.0
 
@@ -133,10 +136,10 @@ sprite_frames = SubResource("SpriteFrames_xehnc")
 frame_progress = 0.405661
 script = ExtResource("19_5wanv")
 
-[node name="Collider" type="StaticBody2D" parent="Background"]
+[node name="SpawnLine" type="Area2D" parent="Background"]
 position = Vector2(1.49998, -25)
 scale = Vector2(0.166875, 0.19)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Collider"]
-position = Vector2(-2.99611, -15.7895)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/SpawnLine"]
+position = Vector2(-8.98864, -10.5263)
 shape = SubResource("RectangleShape2D_esnm0")

@@ -1,13 +1,65 @@
-[gd_scene load_steps=5 format=3 uid="uid://bchgy5vytn1tp"]
+[gd_scene load_steps=14 format=3 uid="uid://bchgy5vytn1tp"]
 
 [ext_resource type="Script" path="res://enemies/basic_enemy.gd" id="1_ew14c"]
 [ext_resource type="PackedScene" uid="uid://6pq7txmq8qn0" path="res://components/health/health_component.tscn" id="2_g4sv3"]
+[ext_resource type="Texture2D" uid="uid://c0qukupbwe8ta" path="res://assets/art/EnemyBike.png" id="2_prjfp"]
+[ext_resource type="Texture2D" uid="uid://c47ie4fcx4e2f" path="res://assets/Light_Trail.png" id="4_ao4vh"]
+[ext_resource type="Script" path="res://player/LightTrailAnimation.gd" id="5_vhom7"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rltep"]
-radius = 8.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5f31"]
+size = Vector2(8, 18)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8vec1"]
-radius = 7.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghx5y"]
+size = Vector2(6, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfjmr"]
+atlas = ExtResource("4_ao4vh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4y13"]
+atlas = ExtResource("4_ao4vh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pen2k"]
+atlas = ExtResource("4_ao4vh")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nm7v7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfjmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4y13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pen2k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="Animation" id="Animation_alqii"]
+resource_name = "enter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n00jp"]
+_data = {
+"enter": SubResource("Animation_alqii")
+}
 
 [node name="BasicEnemy" type="CharacterBody2D"]
 z_index = 1
@@ -15,21 +67,41 @@ collision_layer = 2
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_ew14c")
+points = 100
+speed = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_rltep")
-debug_color = Color(0.998937, 0, 0.128371, 0.42)
+shape = SubResource("RectangleShape2D_g5f31")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_prjfp")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_g4sv3")]
-max_health = 2
+max_health = 3
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("CircleShape2D_8vec1")
+shape = SubResource("RectangleShape2D_ghx5y")
 
 [node name="FreezeTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="Trail" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_nm7v7")
+frame_progress = 0.949951
+script = ExtResource("5_vhom7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n00jp")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

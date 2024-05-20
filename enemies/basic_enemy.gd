@@ -18,11 +18,25 @@ var state: State = State.Moving
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+
+	Events.connect("level_up_health", level_up_health)
+
+	# Freeze the enemy
+	state = State.Frozen
+
 	add_to_group("enemies")
 	velocity = Vector2.ZERO
 	health_component.health_changed.connect(on_health_changed)
 	hitbox.body_entered.connect(on_hitbox_body_entered)
 	freeze_timer.timeout.connect(on_freeze_timer_timeout)
+
+	# Play the animation
+	$AnimationPlayer.play("enter")
+	await $AnimationPlayer.animation_finished
+
+	# Let the guy move.
+	state = State.Moving
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,9 +56,9 @@ func _draw() -> void:
 	# If frozen, draw as a blue circle
 	match state:
 		State.Moving:
-			draw_circle(Vector2.ZERO, 8, Color.RED)
+			pass
 		State.Frozen:
-			draw_circle(Vector2.ZERO, 8, Color.BLUE)
+			pass
 
 
 func take_damage(damage_source: DamageSource) -> void:
@@ -71,3 +85,6 @@ func on_hitbox_body_entered(body: Node2D) -> void:
 func on_freeze_timer_timeout() -> void:
 	if state == State.Frozen:
 		state = State.Moving
+
+func level_up_health() -> void:
+	$HealthComponent.max_health += 1

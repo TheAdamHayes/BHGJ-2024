@@ -1,10 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmf0jd6u2il1r"]
+[gd_scene load_steps=21 format=3 uid="uid://dmf0jd6u2il1r"]
 
-[ext_resource type="Texture2D" uid="uid://pmrbeq7sjk6k" path="res://assets/art/Title-BG.png" id="1_323gb"]
+[ext_resource type="Texture2D" uid="uid://dtx2hv4xuxy0u" path="res://ui/ui-Menu/AdobeStock_251950642 [Converted]-01.png" id="1_r7q5t"]
 [ext_resource type="Texture2D" uid="uid://kvs0flhdntda" path="res://assets/art/ui-medium-button.png" id="2_a228q"]
 [ext_resource type="FontFile" uid="uid://d3r6n3muqtmtm" path="res://assets/art/ethnocentric/ethnocentric rg.otf" id="3_o45qw"]
+[ext_resource type="Texture2D" uid="uid://db1tvsykock6r" path="res://ui/ui-General/ui-Continue-A.png" id="4_12d16"]
 [ext_resource type="Script" path="res://scripts/Play.gd" id="4_yfd1k"]
+[ext_resource type="Texture2D" uid="uid://ct3ocbhfommpm" path="res://ui/ui-General/ui-Continue-B.png" id="5_08ufo"]
 [ext_resource type="Script" path="res://scripts/Quit.gd" id="5_65lpr"]
+[ext_resource type="Texture2D" uid="uid://cm1vryuvu2ppx" path="res://ui/ui-General/ui-Quit-A.png" id="5_qttc8"]
+[ext_resource type="Texture2D" uid="uid://0086hfns0od8" path="res://ui/ui-General/ui-Quit-B.png" id="7_yp6se"]
+[ext_resource type="Shader" path="res://mainMenuLogo.gdshader" id="10_wp3ei"]
+[ext_resource type="Texture2D" uid="uid://dkmlnhsbnr1es" path="res://assets/art/TS-Logo-removebg-preview.png" id="11_kx1bu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qj450"]
 texture = ExtResource("2_a228q")
@@ -14,6 +20,32 @@ default_font = ExtResource("3_o45qw")
 default_font_size = 32
 Button/styles/normal = SubResource("StyleBoxTexture_qj450")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_76xcr"]
+texture = ExtResource("4_12d16")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ar5dm"]
+texture = ExtResource("5_08ufo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tnu2i"]
+texture = ExtResource("5_08ufo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dmn5s"]
+texture = ExtResource("5_qttc8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fkgi4"]
+texture = ExtResource("5_qttc8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tqd16"]
+texture = ExtResource("7_yp6se")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_inepw"]
+shader = ExtResource("10_wp3ei")
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/line_width = 0.1
+shader_parameter/angle = 0.785398
+shader_parameter/speed = 1.0
+shader_parameter/wait_cycles = 1.0
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -22,37 +54,47 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="title" type="Sprite2D" parent="."]
-texture_filter = 3
-position = Vector2(160.556, 89.9375)
-scale = Vector2(0.166782, 0.166782)
-texture = ExtResource("1_323gb")
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(159.715, 90.0937)
+scale = Vector2(0.127798, 0.127798)
+texture = ExtResource("1_r7q5t")
 
 [node name="Play" type="Button" parent="."]
 layout_mode = 0
-offset_left = 99.0
-offset_top = 107.0
-offset_right = 545.0
-offset_bottom = 174.0
+offset_left = 116.0
+offset_top = 132.0
+offset_right = 382.0
+offset_bottom = 176.0
 scale = Vector2(0.28481, 0.28481)
 theme = SubResource("Theme_hxblf")
-text = "PLAY"
+theme_override_styles/normal = SubResource("StyleBoxTexture_76xcr")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ar5dm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tnu2i")
 script = ExtResource("4_yfd1k")
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 0
-offset_left = 98.0
-offset_top = 141.0
-offset_right = 544.0
-offset_bottom = 208.0
-scale = Vector2(0.28481, 0.28481)
-theme = SubResource("Theme_hxblf")
-text = "QUIT"
+offset_left = 117.0
+offset_top = 151.0
+offset_right = 392.0
+offset_bottom = 197.0
+scale = Vector2(0.28, 0.28)
+theme_override_styles/normal = SubResource("StyleBoxTexture_dmn5s")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fkgi4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tqd16")
 script = ExtResource("5_65lpr")
+
+[node name="Logo" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_inepw")
+layout_mode = 0
+offset_left = 14.0
+offset_top = 61.0
+offset_right = 1400.0
+offset_bottom = 173.0
+scale = Vector2(0.205357, 0.205357)
+texture = ExtResource("11_kx1bu")
 
 [connection signal="button_down" from="Play" to="Play" method="_on_button_down"]
 [connection signal="mouse_entered" from="Play" to="Play" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Play" to="Play" method="_on_mouse_exited"]
 [connection signal="button_down" from="Quit" to="Quit" method="_on_button_down"]
-[connection signal="mouse_entered" from="Quit" to="Quit" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Quit" to="Quit" method="_on_mouse_exited"]

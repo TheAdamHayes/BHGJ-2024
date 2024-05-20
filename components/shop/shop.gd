@@ -20,6 +20,7 @@ func show_shop():
 	# Put SFX here on shop open
 	self.visible = true
 	get_tree().paused = true
+	$AnimationTree.play("enter")
 
 func process_shop(upgrade):
 	pull_score()
@@ -43,6 +44,8 @@ func process_shop(upgrade):
 
 
 func hide_shop():
+	$AnimationTree.play("exit")
+	await $AnimationTree.animation_finished
 	get_tree().paused = false
 	self.visible = false
 

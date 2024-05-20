@@ -8,11 +8,12 @@ var speed: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Events.emit_signal("freezeBombStatus", "traveling")
-	
+
 	area_entered.connect(on_bomb_hit)
 	body_entered.connect(on_bomb_hit)
 	life_timer.timeout.connect(queue_free)
 	Events.wave_ended.connect(queue_free)
+	$AnimatedSprite2D.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,7 +37,7 @@ func explode() -> void:
 	explosion.global_position = global_position
 	get_parent().add_child(explosion)
 	queue_free()
-	
+
 func missExplode():
 	Events.emit_signal("freezeBombStatus", "missed")
 	explode.call_deferred()

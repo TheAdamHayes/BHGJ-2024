@@ -1,8 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpj1dstaaqis6"]
+[gd_scene load_steps=7 format=3 uid="uid://dpj1dstaaqis6"]
 
 [ext_resource type="Script" path="res://abilities/turret.gd" id="1_8iwik"]
+[ext_resource type="Texture2D" uid="uid://bmes07r35cvou" path="res://assets/art/TurretSpritesheet.png" id="2_rproh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_laxme"]
+atlas = ExtResource("2_rproh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yd8l7"]
+atlas = ExtResource("2_rproh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4t8dk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_laxme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yd8l7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4eeit"]
+size = Vector2(20, 18)
 
 [node name="Turret" type="Node2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_8iwik")
 
 [node name="UpgradeTimer" type="Timer" parent="."]
@@ -12,3 +39,13 @@ autostart = true
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4t8dk")
+frame_progress = 0.0695625
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_4eeit")

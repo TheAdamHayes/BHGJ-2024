@@ -53,7 +53,7 @@ func _on_button_down():
 
 	# Change the scene to main.tscn after a short delay to allow sparkles to show
 	await get_tree().create_timer(0.6).timeout
-#	get_tree().quit()
+	get_tree().quit()
 
 func _on_tween_finished(sparkle):
 	sparkle.queue_free()

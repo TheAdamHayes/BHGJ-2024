@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://player/LightTrailAnimation.gd" id="6_cpwxe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bxk17"]
-radius = 3.0
+radius = 3.16228
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ssc2v"]
 atlas = ExtResource("3_opfbh")

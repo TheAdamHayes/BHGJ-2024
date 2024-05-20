@@ -33,10 +33,9 @@ func on_spawn_timer_timeout() -> void:
 	var enemy = BASIC_ENEMY.instantiate()
 	var spawn_point: Vector2 = global_position
 	var viewport_size: Vector2 = get_viewport_rect().size
-	# Set y coord above the screen
+	# Set y coord to be in horizon line.
 	# Set x coord to be random point within the screen
-	spawn_point.y -= viewport_size.y/2
-	spawn_point.y -= randi_range(5, 20)
+	spawn_point.y = -35.
 	spawn_point.x = randf_range(global_position.x - (viewport_size.x/2) + 10, global_position.x + (viewport_size.x/2) - 10)
 	enemy.global_position = spawn_point
 	get_parent().add_child(enemy)
