@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var debug_label: Label = $DebugData
 
 var items: Dictionary = {}  # String: Variant
-var enabled: bool = true
+var enabled: bool = false
 var starting_time: int
 var frame_count: int = 0
 

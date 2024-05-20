@@ -6,7 +6,7 @@
 
 class_name FMODGuids
 
-class Events:
+class FMODEvents:
 	const MUSIC_LEVEL1_BATTLE = "{7cc75bb5-6913-4415-9e50-44bee1d70846}"
 	const MUSIC_MAIN_MENU = "{dee76801-3250-4418-beba-f019b9cc1cd5}"
 	const SFX_ENEMY_DEATH = "{438c883a-75b8-4654-a510-fb4bc68525a7}"

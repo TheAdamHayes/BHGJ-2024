@@ -1,21 +1,128 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhfdrl1d6jwmn"]
+[gd_scene load_steps=22 format=3 uid="uid://dhfdrl1d6jwmn"]
 
 [ext_resource type="Script" path="res://components/shop/shop.gd" id="1_3esjc"]
-[ext_resource type="Texture2D" uid="uid://3sfsmnevf2g3" path="res://assets/kenney_playing-cards-pack/PNG/Cards (small)/card_clubs_02.png" id="1_iy2h4"]
-[ext_resource type="FontFile" uid="uid://bu1wn0se8b3nc" path="res://resources/m5x7.ttf" id="2_lfa0m"]
+[ext_resource type="Texture2D" uid="uid://ukrn1r1timmb" path="res://ui/ui-Shop/ui-Shop-Turret-A.png" id="2_mef2v"]
+[ext_resource type="Shader" path="res://mainMenuLogo.gdshader" id="2_pu5px"]
 [ext_resource type="Script" path="res://components/shop/buttons.gd" id="2_wgq1e"]
-[ext_resource type="Texture2D" uid="uid://dvy5rqteihvor" path="res://assets/kenney_playing-cards-pack/PNG/Cards (small)/card_clubs_03.png" id="3_xmqkf"]
-[ext_resource type="Texture2D" uid="uid://bj2oogr14xo6m" path="res://assets/kenney_playing-cards-pack/PNG/Cards (small)/card_hearts_K.png" id="4_lm0n8"]
+[ext_resource type="Texture2D" uid="uid://dtknrqc5jmh02" path="res://ui/ui-Shop/ui-Shop-Turret-B.png" id="3_nbpah"]
+[ext_resource type="Texture2D" uid="uid://cr2d1fkambl1b" path="res://ui/ui-Shop/ui-Shop-Freeze-A.png" id="5_7chmv"]
+[ext_resource type="Texture2D" uid="uid://k7vyh3g4tket" path="res://ui/ui-Shop/ui-Shop-Freeze-B.png" id="6_8ln0w"]
+[ext_resource type="Texture2D" uid="uid://bhficsswavp2b" path="res://ui/ui-Shop/ui-Shop-Speed-A.png" id="7_t85ui"]
+[ext_resource type="Texture2D" uid="uid://bphjicqbfek7n" path="res://ui/ui-Shop/ui-Shop-Speed-B.png" id="8_0fsnq"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8i7s0"]
-bg_color = Color(0.439049, 0.439049, 0.439049, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mpefa"]
+shader = ExtResource("2_pu5px")
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/line_width = 0.1
+shader_parameter/angle = 0.785398
+shader_parameter/speed = 0.5
+shader_parameter/wait_cycles = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_15vlu"]
+texture = ExtResource("2_mef2v")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w7gy1"]
+texture = ExtResource("3_nbpah")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ofrqs"]
+shader = ExtResource("2_pu5px")
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/line_width = 0.1
+shader_parameter/angle = 0.785398
+shader_parameter/speed = 0.5
+shader_parameter/wait_cycles = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8te20"]
+texture = ExtResource("5_7chmv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yep1n"]
+texture = ExtResource("6_8ln0w")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_02eda"]
+shader = ExtResource("2_pu5px")
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/line_width = 0.1
+shader_parameter/angle = 0.785398
+shader_parameter/speed = 0.5
+shader_parameter/wait_cycles = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h6a4b"]
+texture = ExtResource("7_t85ui")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dvxe7"]
+texture = ExtResource("8_0fsnq")
+
+[sub_resource type="Animation" id="Animation_b5f4u"]
+resource_name = "enter"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2.46229, 1),
+"update": 0,
+"values": [Vector2(0, -20), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_63asa"]
+resource_name = "exit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 2.46229),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7225b"]
+_data = {
+"enter": SubResource("Animation_b5f4u"),
+"exit": SubResource("Animation_63asa")
+}
 
 [node name="Shop" type="Control"]
 process_mode = 3
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -20.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3esjc")
@@ -36,12 +143,6 @@ process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Spacer3" type="Control" parent="VBoxContainer/HBoxContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -53,274 +154,41 @@ layout_mode = 2
 
 [node name="1" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 process_mode = 3
+material = SubResource("ShaderMaterial_mpefa")
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/hover = SubResource("StyleBoxFlat_8i7s0")
+theme_override_styles/normal = SubResource("StyleBoxTexture_15vlu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_w7gy1")
 icon_alignment = 1
 script = ExtResource("2_wgq1e")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1"]
-process_mode = 3
-layout_mode = 0
-offset_right = 82.0
-offset_bottom = 58.0
-mouse_filter = 2
-theme_override_constants/separation = -12
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1/VBoxContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1/VBoxContainer/HBoxContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1/VBoxContainer/HBoxContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-mouse_filter = 2
-
-[node name="Spacer2" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1/VBoxContainer/HBoxContainer/MarginContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_stretch_ratio = 2.0
-mouse_filter = 2
-texture = ExtResource("1_iy2h4")
-expand_mode = 1
-stretch_mode = 3
-
-[node name="Spacer3" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1/VBoxContainer/HBoxContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("2_lfa0m")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[center]500[/center]"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1/VBoxContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1/VBoxContainer/HBoxContainer2"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="Spacer2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1/VBoxContainer/HBoxContainer2"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("2_lfa0m")
-bbcode_enabled = true
-text = "[center][font_size=16]+1 Drone[/font_size][/center]"
-scroll_active = false
-tab_size = 2
-
-[node name="Spacer3" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1/VBoxContainer/HBoxContainer2"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-
 [node name="2" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 process_mode = 3
+material = SubResource("ShaderMaterial_ofrqs")
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_8te20")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yep1n")
 script = ExtResource("2_wgq1e")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2"]
-process_mode = 3
-layout_mode = 0
-offset_right = 82.0
-offset_bottom = 58.0
-mouse_filter = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2/VBoxContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2/VBoxContainer/HBoxContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2/VBoxContainer/HBoxContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-mouse_filter = 2
-
-[node name="Spacer2" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2/VBoxContainer/HBoxContainer/MarginContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_stretch_ratio = 2.0
-mouse_filter = 2
-texture = ExtResource("3_xmqkf")
-expand_mode = 1
-stretch_mode = 3
-
-[node name="Spacer3" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2/VBoxContainer/HBoxContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("2_lfa0m")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[center]500[/center]"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2/VBoxContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2/VBoxContainer/HBoxContainer2"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="Spacer2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2/VBoxContainer/HBoxContainer2"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("2_lfa0m")
-bbcode_enabled = true
-text = "[center][font_size=16]Freeze Bomb[/font_size][/center]"
-scroll_active = false
-tab_size = 2
-
-[node name="Spacer3" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2/VBoxContainer/HBoxContainer2"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
 
 [node name="3" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 process_mode = 3
+material = SubResource("ShaderMaterial_02eda")
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_h6a4b")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dvxe7")
 script = ExtResource("2_wgq1e")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3"]
-process_mode = 3
-layout_mode = 0
-offset_right = 81.0
-offset_bottom = 58.0
-mouse_filter = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3/VBoxContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3/VBoxContainer/HBoxContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3/VBoxContainer/HBoxContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-mouse_filter = 2
-
-[node name="Spacer2" type="TextureRect" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3/VBoxContainer/HBoxContainer/MarginContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_stretch_ratio = 2.0
-mouse_filter = 2
-texture = ExtResource("4_lm0n8")
-expand_mode = 1
-stretch_mode = 3
-
-[node name="Spacer3" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3/VBoxContainer/HBoxContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("2_lfa0m")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[center]500[/center]"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3/VBoxContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3/VBoxContainer/HBoxContainer2"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="Spacer2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3/VBoxContainer/HBoxContainer2"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("2_lfa0m")
-bbcode_enabled = true
-text = "[center][font_size=16]+1 Speed[/font_size][/center]"
-scroll_active = false
-tab_size = 2
-
-[node name="Spacer3" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/3/VBoxContainer/HBoxContainer2"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="Spacer4" type="Control" parent="VBoxContainer/HBoxContainer"]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="Spacer3" type="Control" parent="VBoxContainer"]
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="AnimationTree" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7225b")
+}
 
 [connection signal="button_down" from="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1" to="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/1" method="_on_button_down"]
 [connection signal="button_down" from="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2" to="VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer/2" method="_on_button_down"]

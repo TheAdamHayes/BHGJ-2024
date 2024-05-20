@@ -6,6 +6,7 @@ var damage: int = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$AnimatedSprite2D.play()
 	area_entered.connect(on_explosion_hit)
 	body_entered.connect(on_explosion_hit)
 	life_timer.timeout.connect(queue_free)
@@ -16,6 +17,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _draw():
+	await $AnimatedSprite2D.animation_finished
 	draw_circle(Vector2.ZERO, radius, Color.LIGHT_BLUE)
 
 func on_explosion_hit(collider: Node2D):

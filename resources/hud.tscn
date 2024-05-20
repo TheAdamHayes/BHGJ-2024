@@ -1,0 +1,110 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtdlfotlj5oc0"]
+
+[ext_resource type="Texture2D" uid="uid://g4tugm7w1n70" path="res://ui/ui-Pause/ui-Turret-panel.png" id="1_ntgsc"]
+[ext_resource type="Script" path="res://resources/hud.gd" id="1_o6qct"]
+[ext_resource type="FontFile" uid="uid://bu1wn0se8b3nc" path="res://resources/m5x7.ttf" id="2_ytxst"]
+[ext_resource type="Texture2D" uid="uid://bi6e2v21efrwq" path="res://ui/ui-Pause/ui-Speed-panel.png" id="3_vhv3u"]
+[ext_resource type="Texture2D" uid="uid://bgu8wwxr46vlk" path="res://ui/ui-Pause/ui-Freeze-panel.png" id="4_7bcsp"]
+[ext_resource type="Texture2D" uid="uid://dbk0qes2f4ad8" path="res://ui/ui-Pause/ui-Lives-panel.png" id="5_jgap8"]
+
+[node name="hud" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -160.0
+offset_top = -91.0
+offset_right = -46.0
+offset_bottom = -29.0
+script = ExtResource("1_o6qct")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 91.0
+offset_right = 271.0
+offset_bottom = 152.0
+
+[node name="Turrets" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 37.0
+offset_bottom = 23.0
+texture = ExtResource("1_ntgsc")
+expand_mode = 1
+
+[node name="Number" type="RichTextLabel" parent="Panel/Turrets"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 3.0
+offset_right = 32.0
+offset_bottom = 19.0
+theme_override_fonts/normal_font = ExtResource("2_ytxst")
+bbcode_enabled = true
+text = "[center]1[/center]"
+
+[node name="Speed" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 1.0
+offset_right = 74.0
+offset_bottom = 23.0
+texture = ExtResource("3_vhv3u")
+expand_mode = 1
+
+[node name="Number" type="RichTextLabel" parent="Panel/Speed"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 3.0
+offset_right = 32.0
+offset_bottom = 19.0
+theme_override_fonts/normal_font = ExtResource("2_ytxst")
+bbcode_enabled = true
+text = "[center]1[/center]"
+
+[node name="Freeze" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 1.0
+offset_right = 111.0
+offset_bottom = 23.0
+texture = ExtResource("4_7bcsp")
+expand_mode = 1
+
+[node name="Number" type="RichTextLabel" parent="Panel/Freeze"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 3.0
+offset_right = 32.0
+offset_bottom = 19.0
+theme_override_fonts/normal_font = ExtResource("2_ytxst")
+bbcode_enabled = true
+text = "[center]1[/center]"
+
+[node name="Lives" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 23.0
+offset_right = 85.0
+offset_bottom = 60.0
+texture = ExtResource("5_jgap8")
+expand_mode = 1
+
+[node name="Number" type="RichTextLabel" parent="Panel/Lives"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = -1.0
+offset_right = 44.0
+offset_bottom = 27.0
+theme_override_fonts/normal_font = ExtResource("2_ytxst")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]1[/center]"
+
+[node name="WaveNumber" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 44.0
+offset_right = 321.0
+offset_bottom = 60.0
+theme_override_fonts/normal_font = ExtResource("2_ytxst")
+bbcode_enabled = true
+text = "[center]Wave Number: 1[/center]"

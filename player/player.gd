@@ -4,7 +4,7 @@ const FREEZE_BOMB = preload("res://abilities/freeze_bomb.tscn")
 const TURRET = preload("res://abilities/turret.tscn")
 const LINE_BULLET = preload("res://bullets/line_bullet.tscn")
 
-var speed = 1
+var speed = 0.5
 
 var invincible: bool = false
 var time_since_last_fire: float = 0.0
@@ -13,6 +13,7 @@ var available_turrets: int = 0
 var shop: bool = false
 
 var speed_upgrade_increase: float = 0.5
+var available_bombs = 1
 
 @onready var health_component = $HealthComponent
 @onready var bomb_cooldown: Timer = $BombCooldown
@@ -22,6 +23,7 @@ func _ready():
 	health_component.health_changed.connect(on_health_changed)
 	Events.connect("speed_upgrade", speed_upgrade)
 	Events.connect("turret_upgrade", turret_upgrade)
+	Events.connect("bomb_upgrade", bomb_upgrade)
 
 func _input(_event):
 	if Input.is_action_just_pressed("spacebar"):
@@ -30,8 +32,13 @@ func _input(_event):
 			turret.global_position = global_position
 			get_parent().add_child(turret)
 			available_turrets -= 1
+			Events.emit_signal("new_turret_amount", available_turrets)
+
 	if Input.is_action_just_pressed("bomb"):
-		shoot_freeze_bomb()
+		if available_bombs > 0:
+			shoot_freeze_bomb()
+			available_bombs -= 1
+			Events.emit_signal("new_bomb_amount", available_bombs)
 
 
 
@@ -114,6 +121,7 @@ func _draw():
 func take_damage(damage_source: DamageSource) -> void:
 	if !invincible:
 		health_component.reduce_health(damage_source.damage)
+		Events.emit_signal("new_life_amount", health_component.health)
 		activate_iframe_seconds(2)
 
 # over the next duration seconds, be invincible and flicker visibility
@@ -155,6 +163,12 @@ func stay_in_viewport():
 
 func speed_upgrade():
 	speed += speed_upgrade_increase
+	Events.emit_signal("new_speed_amount", speed)
 
 func turret_upgrade():
 	available_turrets += 1
+	Events.emit_signal("new_turret_amount", available_turrets)
+
+func bomb_upgrade():
+	available_bombs += 1
+	Events.emit_signal("new_bomb_amount", available_bombs)

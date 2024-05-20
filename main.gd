@@ -42,6 +42,9 @@ func setup_next_wave() -> void:
 
 	add_enemy_spawer()
 	Global.player.available_turrets += 1
+
+	Events.emit_signal("new_wave_number", wave_num)
+
 	Events.emit_signal("show_shop")
 
 	match wave_num:
@@ -63,6 +66,10 @@ func setup_next_wave() -> void:
 		8:
 			get_tree().call_group("spawners", "double_spawn_rate")
 			Global.player.fire_rate /= 1.5
+
+	if wave_num % 1 == 0:
+		# Increase the health every one wave.
+		Events.emit_signal("level_up_health")
 
 	Debug.write("Wave", wave_num)
 	if wave_num == 10:
