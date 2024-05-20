@@ -26,3 +26,7 @@ signal new_turret_amount(amount)
 
 signal new_life_amount(amount)
 signal new_wave_number(number)
+
+signal enemy_spawned
+signal enemy_died
+signal player_died

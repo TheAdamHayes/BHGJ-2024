@@ -4,7 +4,7 @@ const FREEZE_BOMB = preload("res://abilities/freeze_bomb.tscn")
 const TURRET = preload("res://abilities/turret.tscn")
 const LINE_BULLET = preload("res://bullets/line_bullet.tscn")
 
-var speed = 0.5
+var speed = 1
 
 var invincible: bool = false
 var time_since_last_fire: float = 0.0
@@ -12,8 +12,9 @@ var fire_rate: float = 0.5  # Adjust this value to control the fire rate (in sec
 var available_turrets: int = 0
 var shop: bool = false
 
-var speed_upgrade_increase: float = 0.5
+var speed_upgrade_increase: float = 0.25
 var available_bombs = 1
+var dead = false
 
 @onready var health_component = $HealthComponent
 @onready var bomb_cooldown: Timer = $BombCooldown
@@ -146,8 +147,11 @@ func on_health_changed(new_health_amount: int) -> void:
 		die()
 
 func die() -> void:
-	FMODRuntime.play_one_shot_path("events:/SFX/Environment/PlayerDeath")
-	queue_free()
+	if !dead:
+		dead = true
+		FMODRuntime.play_one_shot_path("events:/SFX/Environment/PlayerDeath")
+		queue_free()
+		Events.player_died.emit()
 
 func get_health() -> int:
 	FMODRuntime.play_one_shot_path("events:/SFX/Environment/PlayerHeal")

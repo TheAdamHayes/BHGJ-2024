@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://lpwwjs7vfskc"]
+[gd_scene load_steps=25 format=3 uid="uid://lpwwjs7vfskc"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_0cnj1"]
 [ext_resource type="PackedScene" uid="uid://dqfxqgmedkaqr" path="res://autoload/audio_manager.tscn" id="2_iwlhx"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://components/game score/game_score_manager.gd" id="7_naspo"]
 [ext_resource type="Texture2D" uid="uid://buh1ojilca03j" path="res://assets/art/city-skyline.png" id="8_l3csk"]
 [ext_resource type="Texture2D" uid="uid://cx503e3v1qy3u" path="res://assets/art/skyline-divider.png" id="9_beypm"]
+[ext_resource type="FontFile" uid="uid://bu1wn0se8b3nc" path="res://resources/m5x7.ttf" id="9_sqwme"]
 [ext_resource type="Texture2D" uid="uid://c2ys00yrl3uhs" path="res://assets/art/bg-animated/0.png" id="10_nrc0v"]
 [ext_resource type="Texture2D" uid="uid://webhvihbqv0g" path="res://assets/art/bg-animated/1.png" id="11_xriix"]
 [ext_resource type="Texture2D" uid="uid://6gu6wkapsqts" path="res://assets/art/bg-animated/2.png" id="12_lbkps"]
@@ -80,7 +81,7 @@ color = Color(0.0980392, 0.247059, 0.4, 1)
 script = ExtResource("7_naspo")
 
 [node name="DefendZone" type="Area2D" parent="."]
-position = Vector2(0, 75)
+position = Vector2(0, 120)
 collision_layer = 0
 collision_mask = 2
 
@@ -95,6 +96,7 @@ offset_bottom = 15.0
 color = Color(0.7, 0.14, 0.14, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_s0u70")]
+collision_mask = 1
 
 [node name="GameCamera" parent="." instance=ExtResource("4_dybw0")]
 
@@ -117,7 +119,19 @@ offset_bottom = 1.0
 [node name="shop" parent="CanvasLayer" instance=ExtResource("6_i6fsj")]
 visible = false
 
+[node name="Gameover Label" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 40.0
+offset_top = 120.0
+offset_right = 384.0
+offset_bottom = 171.0
+theme_override_fonts/font = ExtResource("9_sqwme")
+theme_override_font_sizes/font_size = 30
+text = "Gameover! 
+Press Shift-R to restart!"
+
 [node name="Background" type="Node2D" parent="."]
+position = Vector2(0, -22)
 
 [node name="Divider" type="Sprite2D" parent="Background"]
 position = Vector2(-1.42109e-14, -23)
@@ -143,3 +157,13 @@ scale = Vector2(0.166875, 0.19)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/SpawnLine"]
 position = Vector2(-8.98864, -10.5263)
 shape = SubResource("RectangleShape2D_esnm0")
+
+[node name="Boundary" type="StaticBody2D" parent="."]
+position = Vector2(-23, -125)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boundary"]
+position = Vector2(-5, 5)
+polygon = PackedVector2Array(-132, 8, -132, 208, -100, 208, -44, 72, 100, 72, 156, 208, 188, 208, 188, 8)
+
+[node name="EnemySpawnerLocation" type="Marker2D" parent="."]
+position = Vector2(-72, -48)

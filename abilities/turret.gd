@@ -16,7 +16,7 @@ var paused: bool = false
 func _ready():
 	$AnimatedSprite2D.play()
 	add_to_group("turrets")
-	upgrade_timer.timeout.connect(upgrade_turret)
+	# upgrade_timer.timeout.connect(upgrade_turret)
 	attack_timer.timeout.connect(on_attack_timer_timeout)
 	Events.turret_added.emit(self)
 

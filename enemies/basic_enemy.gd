@@ -18,7 +18,7 @@ var state: State = State.Moving
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
+	Events.enemy_spawned.emit()
 	Events.connect("level_up_health", level_up_health)
 
 	# Freeze the enemy
@@ -75,6 +75,7 @@ func on_health_changed(new_health_amount: int) -> void:
 func die() -> void:
 	FMODRuntime.play_one_shot_path("event:/SFX/Enemy/Death")
 	Events.emit_signal("update_score", points, "add")
+	Events.enemy_died.emit()
 	queue_free()
 
 
