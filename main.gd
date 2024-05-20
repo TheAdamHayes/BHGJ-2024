@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var gameover_label: Label = $"CanvasLayer/Gameover Label"
 @onready var enemy_spawner_location: Marker2D = $EnemySpawnerLocation
 @onready var next_wave_timer: Timer = $NextWaveTimer
 @onready var wait_timer: Timer = $WaitTimer
@@ -23,7 +22,6 @@ func _ready():
 	prepare_next_wave() # start waves
 	Events.enemy_spawned.connect(on_enemy_spawned)
 	Events.enemy_died.connect(on_enemy_died)
-	Events.player_died.connect(on_player_died)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -128,10 +126,10 @@ func on_defend_zone_entered(entered_node: Node2D) -> void:
 	gameover()
 
 func gameover() -> void:
+	Events.emit_signal("game_over")
 	is_gameover = true
 	if is_instance_valid(Global.player):
 		Global.player.die()
-	gameover_label.visible = true
 
 func on_enemy_spawned() -> void:
 	num_wave_enemies += 1
@@ -140,6 +138,3 @@ func on_enemy_died() -> void:
 	num_wave_enemies -= 1
 	if !enemies_spawning and num_wave_enemies == 0:
 		prepare_next_wave()
-
-func on_player_died() -> void:
-	gameover()

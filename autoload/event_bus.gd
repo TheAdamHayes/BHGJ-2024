@@ -30,3 +30,8 @@ signal new_wave_number(number)
 signal enemy_spawned
 signal enemy_died
 signal player_died
+signal game_over_score(score)
+
+signal game_over()
+
+signal get_score()
