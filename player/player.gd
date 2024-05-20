@@ -174,4 +174,5 @@ func turret_upgrade():
 
 func bomb_upgrade():
 	available_bombs += 1
+	print("BOMBS: "+str(bomb_upgrade))
 	Events.emit_signal("new_bomb_amount", available_bombs)
