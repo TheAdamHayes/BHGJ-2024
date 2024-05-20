@@ -56,13 +56,14 @@ func _draw() -> void:
 	# If frozen, draw as a blue circle
 	match state:
 		State.Moving:
-			pass
+			$Sprite.texture = load("res://assets/art/EnemyBike.png")
 		State.Frozen:
-			pass
+			$Sprite.texture = load("res://assets/art/EnemyBike-frozen.png")
 
 
 func take_damage(damage_source: DamageSource) -> void:
-	health_component.reduce_health(damage_source.damage)
+	if state == State.Moving:
+		health_component.reduce_health(damage_source.damage)
 	if damage_source.status == DamageSource.StatusEffect.Freeze:
 		state = State.Frozen
 		freeze_timer.start()
@@ -88,3 +89,8 @@ func on_freeze_timer_timeout() -> void:
 
 func level_up_health() -> void:
 	$HealthComponent.max_health += 1
+
+func clear():
+	# DONT CLEAR IF IT'S FROZEN
+	if state == State.Moving:
+		queue_free()

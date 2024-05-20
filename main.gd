@@ -81,7 +81,7 @@ func on_next_wave_timer_timeout() -> void:
 	# Stop all spawners and turrets, and kill all enemies
 	wave_in_progress = false
 	Events.wave_ended.emit()
-	get_tree().call_group("enemies", "queue_free")
+	get_tree().call_group("enemies", "clear")
 	get_tree().call_group("spawners", "pause")
 	get_tree().call_group("turrets", "pause")
 
