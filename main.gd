@@ -112,6 +112,7 @@ func on_defend_zone_entered(entered_node: Node2D) -> void:
 	gameover()
 
 func gameover() -> void:
+	Events.emit_signal("game_over")
 	is_gameover = true
 	if is_instance_valid(Global.player):
 		Global.player.die()

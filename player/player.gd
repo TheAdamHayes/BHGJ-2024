@@ -23,7 +23,7 @@ func _ready():
 	health_component.health_changed.connect(on_health_changed)
 	Events.connect("speed_upgrade", speed_upgrade)
 	Events.connect("turret_upgrade", turret_upgrade)
-	Events.connect("bomb_upgrade", bomb_upgrade)
+	Events.connect("freeze_bomb_upgrade", bomb_upgrade)
 
 func _input(_event):
 	if Input.is_action_just_pressed("spacebar"):
@@ -147,6 +147,8 @@ func on_health_changed(new_health_amount: int) -> void:
 
 func die() -> void:
 	FMODRuntime.play_one_shot_path("events:/SFX/Environment/PlayerDeath")
+	print("PLAYER: GAME OVER!!!!!!!!!!!!!!!!")
+	Events.emit_signal("game_over")
 	queue_free()
 
 func get_health() -> int:
