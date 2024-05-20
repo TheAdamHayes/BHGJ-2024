@@ -8,11 +8,12 @@ enum State {
 @onready var health_component = $HealthComponent
 @onready var hitbox = $Hitbox
 @onready var freeze_timer: Timer = $FreezeTimer
-var speed = 20
+
 var contact_damage = DamageSource.new(2)
 var state: State = State.Moving
 
-@export var points: int = 10
+@export var points: int = 500
+@export var speed = 40
 
 
 # Called when the node enters the scene tree for the first time.
@@ -59,7 +60,7 @@ func on_health_changed(new_health_amount: int) -> void:
 
 func die() -> void:
 	FMODRuntime.play_one_shot_path("event:/SFX/Enemy/Death")
-	Events.emit_signal("update_score", 10, "add")
+	Events.emit_signal("update_score", points, "add")
 	queue_free()
 
 

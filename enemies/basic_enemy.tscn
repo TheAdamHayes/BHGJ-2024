@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bchgy5vytn1tp"]
 
 [ext_resource type="Script" path="res://enemies/basic_enemy.gd" id="1_ew14c"]
-[ext_resource type="PackedScene" uid="uid://6pq7txmq8qn0" path="res://components/health_component.tscn" id="2_g4sv3"]
+[ext_resource type="PackedScene" uid="uid://6pq7txmq8qn0" path="res://components/health/health_component.tscn" id="2_g4sv3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rltep"]
 radius = 8.0
@@ -21,7 +21,7 @@ shape = SubResource("CircleShape2D_rltep")
 debug_color = Color(0.998937, 0, 0.128371, 0.42)
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_g4sv3")]
-max_health = 10
+max_health = 2
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0

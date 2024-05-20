@@ -1,14 +1,65 @@
-[gd_scene load_steps=8 format=3 uid="uid://lpwwjs7vfskc"]
+[gd_scene load_steps=23 format=3 uid="uid://lpwwjs7vfskc"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_0cnj1"]
 [ext_resource type="PackedScene" uid="uid://dqfxqgmedkaqr" path="res://autoload/audio_manager.tscn" id="2_iwlhx"]
 [ext_resource type="PackedScene" uid="uid://c2kn8b8fgmii1" path="res://player/player.tscn" id="2_s0u70"]
-[ext_resource type="PackedScene" uid="uid://drgaacr8tvtlv" path="res://components/game_camera.tscn" id="4_dybw0"]
-[ext_resource type="PackedScene" uid="uid://d4idcibmfenoy" path="res://components/ui_score_manager.tscn" id="6_0bj0f"]
-[ext_resource type="Script" path="res://components/game_score_manager.gd" id="7_naspo"]
+[ext_resource type="PackedScene" uid="uid://drgaacr8tvtlv" path="res://components/Game Camera/game_camera.tscn" id="4_dybw0"]
+[ext_resource type="PackedScene" uid="uid://d4idcibmfenoy" path="res://components/game score/ui_score_manager.tscn" id="6_0bj0f"]
+[ext_resource type="PackedScene" uid="uid://dhfdrl1d6jwmn" path="res://components/shop/shop.tscn" id="6_i6fsj"]
+[ext_resource type="Script" path="res://components/game score/game_score_manager.gd" id="7_naspo"]
+[ext_resource type="Texture2D" uid="uid://buh1ojilca03j" path="res://assets/art/city-skyline.png" id="8_l3csk"]
+[ext_resource type="Texture2D" uid="uid://cx503e3v1qy3u" path="res://assets/art/skyline-divider.png" id="9_beypm"]
+[ext_resource type="Texture2D" uid="uid://c2ys00yrl3uhs" path="res://assets/art/bg-animated/0.png" id="10_nrc0v"]
+[ext_resource type="Texture2D" uid="uid://webhvihbqv0g" path="res://assets/art/bg-animated/1.png" id="11_xriix"]
+[ext_resource type="Texture2D" uid="uid://6gu6wkapsqts" path="res://assets/art/bg-animated/2.png" id="12_lbkps"]
+[ext_resource type="Texture2D" uid="uid://be8yl7mxh6pip" path="res://assets/art/bg-animated/3.png" id="13_8lfrr"]
+[ext_resource type="Texture2D" uid="uid://7u27845mwi5f" path="res://assets/art/bg-animated/4.png" id="14_m7s0u"]
+[ext_resource type="Texture2D" uid="uid://c6mxf020b4nvm" path="res://assets/art/bg-animated/5.png" id="15_dwwt7"]
+[ext_resource type="Texture2D" uid="uid://djm7gecp70vq4" path="res://assets/art/bg-animated/6.png" id="16_swwrt"]
+[ext_resource type="Texture2D" uid="uid://ouhyeugiixe0" path="res://assets/art/bg-animated/7.png" id="17_6aqdj"]
+[ext_resource type="Texture2D" uid="uid://83c0jwoskwhe" path="res://assets/art/bg-animated/8.png" id="18_sm7uh"]
+[ext_resource type="Script" path="res://BackgroundAnimation.gd" id="19_5wanv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lan7s"]
 size = Vector2(320, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xehnc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_nrc0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xriix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_lbkps")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_8lfrr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_m7s0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_dwwt7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_swwrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_6aqdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_sm7uh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 60.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_esnm0"]
+size = Vector2(1941.57, 21.0527)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0cnj1")
@@ -59,3 +110,34 @@ one_shot = true
 
 [node name="score_manager" parent="CanvasLayer" instance=ExtResource("6_0bj0f")]
 offset_bottom = 1.0
+
+[node name="shop" parent="CanvasLayer" instance=ExtResource("6_i6fsj")]
+visible = false
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Divider" type="Sprite2D" parent="Background"]
+position = Vector2(-1.42109e-14, -23)
+scale = Vector2(0.166875, 0.19)
+texture = ExtResource("9_beypm")
+
+[node name="Skyline" type="Sprite2D" parent="Background"]
+position = Vector2(0.0999596, -57.375)
+scale = Vector2(0.166563, 0.166875)
+texture = ExtResource("8_l3csk")
+
+[node name="Background" type="AnimatedSprite2D" parent="Background"]
+position = Vector2(0.00829327, 41.0625)
+scale = Vector2(0.166716, 0.166716)
+sprite_frames = SubResource("SpriteFrames_xehnc")
+frame_progress = 0.405661
+script = ExtResource("19_5wanv")
+
+[node name="Collider" type="StaticBody2D" parent="Background"]
+position = Vector2(1.49998, -25)
+scale = Vector2(0.166875, 0.19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Collider"]
+position = Vector2(-2.99611, -15.7895)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_esnm0")

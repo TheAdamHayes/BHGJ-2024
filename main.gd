@@ -39,54 +39,31 @@ func setup_next_wave() -> void:
 		add_child(PLAYER.instantiate())
 
 	wave_num += 1
+
+	add_enemy_spawer()
+	Global.player.available_turrets += 1
+	Events.emit_signal("show_shop")
+
 	match wave_num:
 		1:
-			add_enemy_spawer()
-			Global.player.available_turrets += 3
+			Global.player.available_turrets += 2
 			next_wave_timer.wait_time = 10
 		2:
 			Debug.items.erase("Instructions")
-			add_enemy_spawer()
-			Global.player.available_turrets += 1
 			Global.player.fire_rate /= 1.5
 		3:
-			add_enemy_spawer()
-			Global.player.available_turrets += 1
 			next_wave_timer.wait_time = 15
 		4:
-			add_enemy_spawer()
-			add_enemy_spawer()
-			Global.player.available_turrets += 1
 			Global.player.fire_rate /= 1.5
 		5:
-			add_enemy_spawer()
-			add_enemy_spawer()
 			get_tree().call_group("spawners", "double_spawn_rate")
-			Global.player.available_turrets += 1
 			next_wave_timer.wait_time = 20
 		6:
-			add_enemy_spawer()
-			add_enemy_spawer()
-			Global.player.available_turrets += 1
 			Global.player.fire_rate /= 1.5
-		7:
-			add_enemy_spawer()
-			add_enemy_spawer()
-			Global.player.available_turrets += 1
 		8:
-			add_enemy_spawer()
-			add_enemy_spawer()
 			get_tree().call_group("spawners", "double_spawn_rate")
-			Global.player.available_turrets += 1
-		9:
-			add_enemy_spawer()
-			add_enemy_spawer()
-			add_enemy_spawer()
-		10:
-			add_enemy_spawer()
-			add_enemy_spawer()
-			add_enemy_spawer()
 			Global.player.fire_rate /= 1.5
+
 	Debug.write("Wave", wave_num)
 	if wave_num == 10:
 		Debug.write("Wave", "FINAL WAVE")
